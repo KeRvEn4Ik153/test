@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://dj6v30jwws6hu"]
+
+[ext_resource type="FontFile" uid="uid://bcxais2ew5b2b" path="res://Assets/Fonts/Jacquard12-Regular.ttf" id="1_dsxvt"]
+
+[resource]
+default_font = ExtResource("1_dsxvt")

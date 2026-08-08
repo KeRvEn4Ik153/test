@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://pv5ddix17ncq"]
+
+[ext_resource type="Script" uid="uid://dfjq5j3dy52hd" path="res://Game/MenuScenes/main_menu.gd" id="1_yltbk"]
+
+[node name="Control" type="Control" unique_id=1698249076]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+script = ExtResource("1_yltbk")
+
+[node name="MainPanel" type="PanelContainer" parent="." unique_id=1912725007]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel" unique_id=328662071]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Play" type="Button" parent="MainPanel/VBoxContainer" unique_id=375854071]
+layout_mode = 2
+text = "KEY_PLAY"
+
+[node name="Settings" type="Button" parent="MainPanel/VBoxContainer" unique_id=712651222]
+layout_mode = 2
+text = "KEY_SETTINGS"
+
+[node name="SettingsPanel" type="PanelContainer" parent="." unique_id=1502388524]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel" unique_id=1214927292]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Languages" type="Button" parent="SettingsPanel/VBoxContainer" unique_id=1908575720]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "KEY_LANGUAGES"
+
+[node name="backsettings" type="Button" parent="SettingsPanel" unique_id=1684026340]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "KEY_BACK"
+
+[node name="LanguagesPanel" type="PanelContainer" parent="." unique_id=1386252451]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LanguagesPanel" unique_id=1675400548]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ru" type="Button" parent="LanguagesPanel/VBoxContainer" unique_id=1968917296]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Русский"
+
+[node name="en" type="Button" parent="LanguagesPanel/VBoxContainer" unique_id=853228323]
+layout_mode = 2
+text = "English"
+
+[node name="backlanguages" type="Button" parent="LanguagesPanel" unique_id=2046602740]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "KEY_BACK"
+
+[connection signal="pressed" from="MainPanel/VBoxContainer/Play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MainPanel/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="SettingsPanel/VBoxContainer/Languages" to="." method="_on_languages_pressed"]
+[connection signal="pressed" from="SettingsPanel/backsettings" to="." method="_on_backsettings_pressed"]
+[connection signal="pressed" from="LanguagesPanel/VBoxContainer/ru" to="." method="_on_ru_pressed"]
+[connection signal="pressed" from="LanguagesPanel/VBoxContainer/en" to="." method="_on_en_pressed"]
+[connection signal="pressed" from="LanguagesPanel/backlanguages" to="." method="_on_backlanguages_pressed"]

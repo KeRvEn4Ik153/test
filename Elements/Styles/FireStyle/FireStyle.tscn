@@ -1,0 +1,286 @@
+[gd_scene format=3 uid="uid://eoat6ak16k6v"]
+
+[ext_resource type="Script" uid="uid://cwyraaw1b0lpa" path="res://Elements/Styles/FireStyle/fire_style.gd" id="1_adhyb"]
+[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="2_cg548"]
+[ext_resource type="PackedScene" uid="uid://cxy77iow85qpc" path="res://Effects/MagicEffects/FireStyleEffects/fire_explosion_effect.tscn" id="3_go7yn"]
+[ext_resource type="Texture2D" uid="uid://c0v6ho48dsasc" path="res://Assets/Sprites/sword_effect.png" id="3_mba3n"]
+[ext_resource type="Resource" uid="uid://crx3b7ovfatc2" path="res://Elements/Styles/FireStyle/FireAttackResource/cast_fireball.tres" id="3_mcbpv"]
+[ext_resource type="Resource" uid="uid://bonllhnh3c45v" path="res://Elements/Styles/FireStyle/FireAttackResource/fire_attacks.tres" id="4_mcbpv"]
+[ext_resource type="Resource" uid="uid://giqduwmbdmkt" path="res://Elements/Styles/FireStyle/FireAttackResource/fire_attraction.tres" id="5_s8q36"]
+[ext_resource type="Resource" uid="uid://c85nx3vy2j6bo" path="res://Elements/Styles/FireStyle/FireAttackResource/fire_explosion.tres" id="6_s5jhy"]
+[ext_resource type="Resource" uid="uid://d0ipanpdb7u41" path="res://Elements/Styles/FireStyle/FireAttackResource/unic_burn_effect.tres" id="7_p03eh"]
+[ext_resource type="Resource" uid="uid://c2enni8uirfcp" path="res://Elements/Styles/FireStyle/FireAttackResource/fire_bow_charge.tres" id="8_mapqc"]
+[ext_resource type="Resource" uid="uid://ch75ho32r708h" path="res://Elements/Styles/FireStyle/FireAttackResource/fire_bow_shot.tres" id="9_tsnw4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adhyb"]
+
+[sub_resource type="Animation" id="Animation_cg548"]
+resource_name = "attack1"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 20)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mcbpv"]
+resource_name = "attraction"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1000, 1000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.1001, 0.2, 0.2001, 0.3, 0.3001, 0.4, 0.4001, 0.5, 0.5001, 0.6, 0.60010004, 0.6666667, 0.6667667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1.0, 0.7, false],
+"method": &"camera_shake"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mapqc"]
+resource_name = "bow_charge"
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_tsnw4"]
+resource_name = "bow_shot"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_object_from_animation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mba3n"]
+resource_name = "explosion"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1000, 1000)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [ExtResource("3_go7yn")],
+"method": &"spawn_effect"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [6.0, 0.5, true],
+"method": &"camera_shake"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_s5jhy"]
+resource_name = "fireball"
+length = 0.7
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_object_from_animation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_p03eh"]
+resource_name = "unic_burn_effect"
+length = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mcbpv"]
+_data = {
+&"attack1": SubResource("Animation_cg548"),
+&"attraction": SubResource("Animation_mcbpv"),
+&"bow_charge": SubResource("Animation_mapqc"),
+&"bow_shot": SubResource("Animation_tsnw4"),
+&"explosion": SubResource("Animation_mba3n"),
+&"fireball": SubResource("Animation_s5jhy"),
+&"unic_burn_effect": SubResource("Animation_p03eh")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8q36"]
+atlas = ExtResource("3_mba3n")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5jhy"]
+atlas = ExtResource("3_mba3n")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mba3n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8q36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5jhy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FireStyle" type="Node2D" unique_id=2071520491]
+script = ExtResource("1_adhyb")
+attack_resources = Array[ExtResource("2_cg548")]([ExtResource("3_mcbpv"), ExtResource("4_mcbpv"), ExtResource("5_s8q36"), ExtResource("6_s5jhy"), ExtResource("7_p03eh"), ExtResource("8_mapqc"), ExtResource("9_tsnw4")])
+element_type = "fire"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=326263827]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=103336100]
+shape = SubResource("RectangleShape2D_adhyb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1371113471]
+libraries/ = SubResource("AnimationLibrary_mcbpv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=422696389]
+sprite_frames = SubResource("SpriteFrames_mba3n")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

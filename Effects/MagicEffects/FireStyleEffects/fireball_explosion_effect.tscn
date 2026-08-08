@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b26y66ulnurop"]
+
+[ext_resource type="Script" uid="uid://creyy57mwu7up" path="res://Effects/MagicEffects/FireStyleEffects/fireball_explosion_effect.gd" id="1_svm6s"]
+
+[sub_resource type="Curve" id="Curve_svm6s"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.47191018), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1wbtr"]
+curve = SubResource("Curve_svm6s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4wd72"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_1wbtr")
+color = Color(2.324, 0.111, 0.102, 1)
+
+[node name="FireExplosionEffect" type="GPUParticles2D" unique_id=1206645435]
+emitting = false
+amount = 30
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+visibility_rect = Rect2(-58.45974, -71.33173, 125.792305, 137.51038)
+process_material = SubResource("ParticleProcessMaterial_4wd72")
+script = ExtResource("1_svm6s")

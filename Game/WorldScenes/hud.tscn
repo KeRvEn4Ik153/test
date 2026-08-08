@@ -1,0 +1,220 @@
+[gd_scene format=3 uid="uid://b2mhmsxgvdquu"]
+
+[ext_resource type="Script" uid="uid://dv3uxmeujbdha" path="res://Game/WorldScenes/hud.gd" id="1_cinpd"]
+[ext_resource type="Shader" uid="uid://c6o5lexy78cci" path="res://Game/WorldScenes/hud.gdshader" id="2_3rj3x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4vsv"]
+shader = ExtResource("2_3rj3x")
+shader_parameter/blur_amount = 2.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_3rj3x"]
+font_size = 13
+
+[node name="HUD" type="Control" unique_id=2110372159]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cinpd")
+
+[node name="HotBar" type="HBoxContainer" parent="." unique_id=1774302788]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+alignment = 1
+
+[node name="Slot1" type="PanelContainer" parent="HotBar" unique_id=1025849625]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HotBar/Slot1" unique_id=1533845160]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "1"
+
+[node name="Icon" type="TextureRect" parent="HotBar/Slot1" unique_id=433466322]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot2" type="PanelContainer" parent="HotBar" unique_id=1929728112]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HotBar/Slot2" unique_id=1166280059]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "2"
+
+[node name="Icon" type="TextureRect" parent="HotBar/Slot2" unique_id=311467748]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BarsContainer" type="VBoxContainer" parent="." unique_id=1479677107]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -205.0
+offset_top = 5.0
+offset_right = 195.0
+offset_bottom = 63.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+
+[node name="HealthBar" type="ProgressBar" parent="BarsContainer" unique_id=1871439399]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="BarsContainer/HealthBar" unique_id=1648798630]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "10/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ManaBar" type="ProgressBar" parent="BarsContainer" unique_id=1155292183]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="BarsContainer/ManaBar" unique_id=199134742]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "10/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseMenu" type="PanelContainer" parent="." unique_id=623855267]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlurBackground" type="ColorRect" parent="PauseMenu" unique_id=1672316193]
+material = SubResource("ShaderMaterial_g4vsv")
+layout_mode = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=1594709267]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1050309257]
+layout_mode = 2
+size_flags_vertical = 0
+text = "KEY_CONTINUE"
+
+[node name="ChangeStylesButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=872137836]
+layout_mode = 2
+text = "KEY_CHANGE_STYLE"
+
+[node name="QuitToMenuButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1525925693]
+layout_mode = 2
+size_flags_vertical = 0
+text = "KEY_MAIN_MENU"
+
+[node name="ComboLabel" type="Label" parent="." unique_id=1720189816]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_3rj3x")
+
+[node name="StylesMenu" type="PanelContainer" parent="." unique_id=1219334908]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlurBackground" type="ColorRect" parent="StylesMenu" unique_id=1845158982]
+material = SubResource("ShaderMaterial_g4vsv")
+layout_mode = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="BackToPause" type="Button" parent="StylesMenu" unique_id=304237490]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "KEY_BACK"
+
+[node name="StylesContainer" type="HBoxContainer" parent="StylesMenu" unique_id=1783499107]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Resum" type="Button" parent="StylesMenu" unique_id=1623259974]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "KEY_CONTINUE"
+
+[node name="TabMenu" type="PanelContainer" parent="." unique_id=420807777]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabMenu" unique_id=64693904]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HP" type="Label" parent="TabMenu/VBoxContainer" unique_id=1618820544]
+layout_mode = 2
+
+[node name="MP" type="Label" parent="TabMenu/VBoxContainer" unique_id=1556145859]
+layout_mode = 2
+
+[node name="CC" type="Label" parent="TabMenu/VBoxContainer" unique_id=753769175]
+layout_mode = 2
+
+[node name="CD" type="Label" parent="TabMenu/VBoxContainer" unique_id=864856964]
+layout_mode = 2
+
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ChangeStylesButton" to="." method="_on_change_styles_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
+[connection signal="pressed" from="StylesMenu/BackToPause" to="." method="_on_back_to_pause_pressed"]
+[connection signal="pressed" from="StylesMenu/Resum" to="." method="_on_continue_pressed"]

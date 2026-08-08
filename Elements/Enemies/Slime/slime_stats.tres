@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://cx5l61qe2vx4f"]
+
+[ext_resource type="Script" uid="uid://4g51px3w3pb4" path="res://Classes/enemy_stats.gd" id="1_3mnf2"]
+
+[resource]
+script = ExtResource("1_3mnf2")
+speed = 75.0
+gravity = 980.0
+max_health = 1000.0
+current_health = 1000.0
+damage = 20.0
+unic_stats = {
+"jump_cooldown": 1.5,
+"jump_force": -200.0
+}
+metadata/_custom_type_script = "uid://4g51px3w3pb4"

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://coolt8l2cnq86"]
+
+[ext_resource type="FontFile" uid="uid://qo62kyi33d1h" path="res://Assets/Fonts/Jersey10-Regular.ttf" id="1_xkajc"]
+
+[resource]
+default_font = ExtResource("1_xkajc")
+default_font_size = 16

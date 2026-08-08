@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c7i7y81kpnefl"]
+
+[ext_resource type="Texture2D" uid="uid://pnqqwymfug02" path="res://Assets/Sprites/MagicWater.png" id="1_erw1j"]
+[ext_resource type="Script" uid="uid://dxmj1ahjqj2it" path="res://Classes/item_resource.gd" id="1_ucfyr"]
+[ext_resource type="PackedScene" uid="uid://ea3jaxuxgtwi" path="res://Elements/Styles/WaterStyle/water_style.tscn" id="3_vlm7i"]
+
+[resource]
+script = ExtResource("1_ucfyr")
+path = "res://Resources/StyleResources/water_style_data.tres"
+title = "Water Style"
+style_scene = ExtResource("3_vlm7i")
+icon = ExtResource("1_erw1j")
+metadata/_custom_type_script = "uid://dxmj1ahjqj2it"

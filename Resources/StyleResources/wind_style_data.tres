@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d2cqwuncbanj1"]
+
+[ext_resource type="Script" uid="uid://dxmj1ahjqj2it" path="res://Classes/item_resource.gd" id="1_awa30"]
+[ext_resource type="Texture2D" uid="uid://gtd8xv82tao0" path="res://Assets/Sprites/WindBallMagic/WindBall1.png" id="1_ttnm7"]
+[ext_resource type="PackedScene" uid="uid://dk5i24uqmyq3k" path="res://Elements/Styles/WindStyle/WindStyle.tscn" id="3_v6sa4"]
+
+[resource]
+script = ExtResource("1_awa30")
+path = "res://Resources/StyleResources/wind_style_data.tres"
+title = "Wind Style"
+style_scene = ExtResource("3_v6sa4")
+icon = ExtResource("1_ttnm7")
+metadata/_custom_type_script = "uid://dxmj1ahjqj2it"

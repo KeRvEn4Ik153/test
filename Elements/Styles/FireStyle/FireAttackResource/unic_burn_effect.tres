@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://d0ipanpdb7u41"]
+
+[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_qswre"]
+
+[resource]
+script = ExtResource("1_qswre")
+id = "unic_burn_effect"
+animation_name = "unic_burn_effect"
+mana_cost = 20.0
+type_damage = "knockback"
+element_type = "fire"
+which_button_to_attack = "right_skill"
+after_which_attack = "attraction"
+metadata/_custom_type_script = "uid://55ku56vqeupk"

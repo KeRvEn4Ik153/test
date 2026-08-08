@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://5muopdesrt13"]
+
+[ext_resource type="Texture2D" uid="uid://ccgjfxnhbca8" path="res://Assets/Sprites/IceMagicIcicle/Snowflake.png" id="1_byvoh"]
+[ext_resource type="Script" uid="uid://dxmj1ahjqj2it" path="res://Classes/item_resource.gd" id="1_jv7dn"]
+[ext_resource type="PackedScene" uid="uid://dfan6xf6m05jb" path="res://Elements/Styles/IceStyle/ice_style.tscn" id="3_5hv8h"]
+
+[resource]
+script = ExtResource("1_jv7dn")
+path = "res://Resources/StyleResources/ice_style_data.tres"
+title = "Ice Style"
+style_scene = ExtResource("3_5hv8h")
+icon = ExtResource("1_byvoh")
+metadata/_custom_type_script = "uid://dxmj1ahjqj2it"

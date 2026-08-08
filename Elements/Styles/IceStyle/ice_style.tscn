@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dfan6xf6m05jb"]
+
+[ext_resource type="Script" uid="uid://dd0bee51q6p03" path="res://Elements/Styles/IceStyle/ice_style.gd" id="1_8llp8"]
+[ext_resource type="PackedScene" uid="uid://dx1m6mk72snsb" path="res://Elements/Styles/IceStyle/IceAttacks/icicle.tscn" id="2_wn4db"]
+
+[node name="IceStyle" type="Node2D" unique_id=1333221848]
+script = ExtResource("1_8llp8")
+spell_scenes = Array[PackedScene]([ExtResource("2_wn4db")])

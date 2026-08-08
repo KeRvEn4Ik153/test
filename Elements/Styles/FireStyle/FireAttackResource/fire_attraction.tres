@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://giqduwmbdmkt"]
+
+[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_xsco1"]
+
+[resource]
+script = ExtResource("1_xsco1")
+id = "fire_attraction"
+animation_name = "attraction"
+camera_shake_power = 0.2
+camera_shake_time = 0.2
+mana_cost = 30.0
+cooldown = 2.0
+knockback_power = -150.0
+stun_time = 0.2
+type_damage = "knockback"
+element_type = "fire"
+which_button_to_attack = "left_skill"
+after_which_attack = "attack1"
+metadata/_custom_type_script = "uid://55ku56vqeupk"

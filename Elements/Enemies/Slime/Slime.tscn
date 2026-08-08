@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://b6bwlctu80o1x"]
+
+[ext_resource type="Script" uid="uid://eqohrst5lbj6" path="res://Elements/Enemies/Slime/slime.gd" id="1_hi1av"]
+[ext_resource type="Texture2D" uid="uid://0jsgvu4xemh2" path="res://Assets/Sprites/Slime/GreenSlime1.png" id="2_8maq4"]
+[ext_resource type="Resource" uid="uid://cx5l61qe2vx4f" path="res://Elements/Enemies/Slime/slime_stats.tres" id="2_la6ap"]
+[ext_resource type="Texture2D" uid="uid://luorqfx3og2h" path="res://Assets/Sprites/Slime/GreenSlime2.png" id="3_la6ap"]
+[ext_resource type="Texture2D" uid="uid://tp4djqm7s7ej" path="res://Assets/Sprites/Slime/GreenSlime3.png" id="4_c5shf"]
+[ext_resource type="Script" uid="uid://dhudmyh2eylv3" path="res://Elements/Enemies/Slime/effect_manager.gd" id="6_c5shf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yb0ix"]
+height = 36.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y2e1o"]
+radius = 209.02153
+
+[sub_resource type="Animation" id="Animation_yb0ix"]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.5, 0.56666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_8maq4"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_la6ap"]
+_data = {
+&"RESET": SubResource("Animation_yb0ix"),
+&"jump": SubResource("Animation_8maq4")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_la6ap"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8maq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_la6ap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c5shf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y2e1o"]
+height = 36.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=213782885]
+collision_layer = 4
+script = ExtResource("1_hi1av")
+enemy_stats = ExtResource("2_la6ap")
+shake_intencity = 2.0
+
+[node name="EnemyBodyArea" type="Area2D" parent="." unique_id=743431456]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBodyArea" unique_id=1481395401]
+position = Vector2(0, 7)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_yb0ix")
+
+[node name="LineOfSight" type="RayCast2D" parent="." unique_id=640627466]
+unique_name_in_owner = true
+collision_mask = 3
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1074005848]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1697006382]
+shape = SubResource("CircleShape2D_y2e1o")
+
+[node name="WallDetector" type="RayCast2D" parent="." unique_id=1548714438]
+unique_name_in_owner = true
+rotation = -1.5707964
+
+[node name="FloorDetector" type="RayCast2D" parent="." unique_id=969822611]
+unique_name_in_owner = true
+position = Vector2(25, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1537551561]
+libraries/ = SubResource("AnimationLibrary_la6ap")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=206003536]
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_la6ap")
+frame = 1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1045775571]
+position = Vector2(0, 7)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_y2e1o")
+
+[node name="EffectManager" type="Node2D" parent="." unique_id=1228076371]
+script = ExtResource("6_c5shf")
+
+[connection signal="body_entered" from="EnemyBodyArea" to="." method="_on_enemy_body_area_body_entered"]
+[connection signal="body_exited" from="EnemyBodyArea" to="." method="_on_enemy_body_area_body_exited"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -1,0 +1,18 @@
+ID,ru,en
+KEY_PLAY,Играть,Play
+KEY_SETTINGS,Настройки,Settings
+KEY_CC,Крит. шанс,Crit chance
+KEY_CD,Крит. урон,Crit damage
+KEY_MAX_HP,Макс. здоровье,Max hp
+KEY_MAX_MP,Макс. мана,Max mp
+KEY_COMBO,Комбо,Combo
+KEY_EMPTY,Отсутствует,Empty
+KEY_RANGE_ATTACK,Дальняя атака,Range attack
+KEY_MELEE_ATTACK,Ближняя атака,Melee attack
+KEY_LEFT_SKILL,Левый навык,Left skill
+KEY_RIGHT_SKILL,Правый навык,Right skill
+KEY_LOADING,Загрузка,Loading
+KEY_CONTINUE,Продолжить,Continue
+KEY_CHANGE_STYLE,Поменять стиль,Change style
+KEY_MAIN_MENU,Главное меню,Main menu
+KEY_BACK,Назад,Back

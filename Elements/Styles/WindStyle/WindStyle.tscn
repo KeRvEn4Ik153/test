@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dk5i24uqmyq3k"]
+
+[ext_resource type="Script" uid="uid://cvyer2krepi62" path="res://Elements/Styles/WindStyle/wind_style.gd" id="1_usxcx"]
+[ext_resource type="PackedScene" uid="uid://25umohtcrgbc" path="res://Elements/Styles/WindStyle/WindAttacks/WindBall.tscn" id="2_dndau"]
+
+[node name="WindStyle" type="Node2D" unique_id=1228319434]
+script = ExtResource("1_usxcx")
+spell_scenes = Array[PackedScene]([ExtResource("2_dndau")])

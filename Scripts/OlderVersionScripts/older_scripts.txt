@@ -1,0 +1,26 @@
+func try_cast(input_history: Array, player_mana: float, spawn_position: Vector2, target_position: Vector2):
+	last_spawn_position = spawn_position
+	last_target_position = target_position
+	
+	for combo_sequence in COMBO_LIST.keys():
+		if _is_sub_array(combo_sequence, input_history):
+			var function_name = COMBO_LIST[combo_sequence]
+			find_resource(function_name)
+			
+			if player_mana >= attack_resource.mana_cost and timer[function_name] <= 0:
+				if has_method(function_name):
+					var result = call(function_name)
+					if not result:
+						return
+			
+				timer[function_name] = attack_resource.cooldown
+				camera_shake(attack_resource.camera_shake_power, attack_resource.camera_shake_time)
+				return {
+						"is_combo": true, 
+						"mana_cost": attack_resource.mana_cost,
+						"anim_name": attack_resource.animation_name,
+						"anim_player": animation_hitbox ,
+						"can_movement":attack_resource.can_movement
+						}
+
+	return {"is_combo": false, "mana_cost": 0.0}

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://25umohtcrgbc"]
+
+[ext_resource type="Script" uid="uid://bbwai8l6ni7fy" path="res://Elements/Styles/WindStyle/WindAttacks/wind_ball.gd" id="1_4mp10"]
+[ext_resource type="PackedScene" uid="uid://dwtm7e2cnu5ul" path="res://Effects/MagicEffects/wind_explosion.tscn" id="2_e3hrg"]
+[ext_resource type="Texture2D" uid="uid://gtd8xv82tao0" path="res://Assets/Sprites/WindBallMagic/WindBall1.png" id="3_mruo3"]
+[ext_resource type="Texture2D" uid="uid://bs7mfl34vgrag" path="res://Assets/Sprites/WindBallMagic/WindBall2.png" id="4_25hej"]
+[ext_resource type="Texture2D" uid="uid://66fgbiual665" path="res://Assets/Sprites/WindBallMagic/WindBall3.png" id="5_y5lwp"]
+[ext_resource type="Texture2D" uid="uid://b5tpto0gtru5l" path="res://Assets/Sprites/WindBallMagic/WindBall4.png" id="6_phevr"]
+[ext_resource type="Texture2D" uid="uid://d2e3u08nne7ng" path="res://Assets/Sprites/WindBallMagic/WindBall5.png" id="7_116oy"]
+[ext_resource type="Texture2D" uid="uid://c60rshrqq627u" path="res://Assets/Sprites/WindBallMagic/WindBall6.png" id="8_fgqlt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iqbo0"]
+radius = 9.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_385pg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mruo3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_25hej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y5lwp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_phevr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_116oy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fgqlt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Curve" id="Curve_e3hrg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uabrf"]
+curve = SubResource("Curve_e3hrg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c634i"]
+particle_flag_disable_z = true
+gravity = Vector3(0, -100, 0)
+scale_curve = SubResource("CurveTexture_uabrf")
+color = Color(0, 0.8342187, 0.5270305, 1)
+
+[node name="Area2D" type="Area2D" unique_id=511717384]
+scale = Vector2(0.7, 0.7)
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_4mp10")
+damage = 5.0
+speed = 700.0
+knockback_power = 350.0
+time_of_stun = 0.5
+damage_type = "knockback"
+explosion_scene = ExtResource("2_e3hrg")
+shake_intencity = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1662669067]
+shape = SubResource("CircleShape2D_iqbo0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=436285638]
+sprite_frames = SubResource("SpriteFrames_385pg")
+autoplay = "default"
+frame_progress = 0.27477267
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1457644111]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2094867423]
+process_material = SubResource("ParticleProcessMaterial_c634i")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

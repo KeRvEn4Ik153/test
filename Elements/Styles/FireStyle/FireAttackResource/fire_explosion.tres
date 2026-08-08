@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://c85nx3vy2j6bo"]
+
+[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_01hru"]
+
+[resource]
+script = ExtResource("1_01hru")
+id = "fire_explosion"
+animation_name = "explosion"
+camera_shake_power = 0.3
+camera_shake_time = 0.2
+mana_cost = 40.0
+cooldown = 2.0
+damage = 35.0
+knockback_power = 300.0
+stun_time = 0.2
+type_damage = "knockback"
+element_type = "fire"
+can_movement = true
+which_button_to_attack = "right_skill"
+after_which_attack = "fireball"
+metadata/_custom_type_script = "uid://55ku56vqeupk"

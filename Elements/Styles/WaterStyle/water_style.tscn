@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ea3jaxuxgtwi"]
+
+[ext_resource type="Script" uid="uid://euo4phcbfww6" path="res://Elements/Styles/WaterStyle/water_style.gd" id="1_yilqg"]
+[ext_resource type="PackedScene" uid="uid://by8lmufpu08w6" path="res://Elements/Styles/WaterStyle/WaterAttacks/WaterBall.tscn" id="2_1daen"]
+
+[node name="WaterStyle" type="Node2D" unique_id=891490106]
+script = ExtResource("1_yilqg")
+spell_scenes = Array[PackedScene]([ExtResource("2_1daen")])

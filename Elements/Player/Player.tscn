@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://624cuql416cx"]
+
+[ext_resource type="Script" uid="uid://d1efi7q8tjlg6" path="res://Elements/Player/player.gd" id="1_ju6bj"]
+[ext_resource type="Script" uid="uid://c0nu1yw1l38us" path="res://Elements/Player/States/state_machine.gd" id="3_6sb7l"]
+[ext_resource type="Script" uid="uid://cpjxi4ocb5jwy" path="res://Elements/Player/States/run_state.gd" id="4_2a4b6"]
+[ext_resource type="Script" uid="uid://bx0fn8gwh6wg" path="res://Elements/Player/States/idle_state.gd" id="5_8wxpl"]
+[ext_resource type="Script" uid="uid://xdxpd2u0emm4" path="res://Elements/Player/States/jump_state.gd" id="6_02t1f"]
+[ext_resource type="Script" uid="uid://167mw4mqqq5a" path="res://Elements/Player/camera_2d.gd" id="7_2a4b6"]
+[ext_resource type="Script" uid="uid://rramuqm7yaqw" path="res://Elements/Player/States/knockback_state.gd" id="7_8wxpl"]
+[ext_resource type="Script" uid="uid://fwyu5dva3vbj" path="res://Elements/Player/States/dash_state.gd" id="8_8wxpl"]
+[ext_resource type="Script" uid="uid://c788suo2hried" path="res://Elements/Player/States/attack_state.gd" id="9_02t1f"]
+[ext_resource type="Script" uid="uid://7ub6okutvifi" path="res://Elements/Player/States/interactable.gd" id="10_w43an"]
+[ext_resource type="Script" uid="uid://dy0bfkvg27ljq" path="res://Elements/Player/effects_manager.gd" id="11_ry1fm"]
+[ext_resource type="Shader" uid="uid://djv8f51lxh65q" path="res://Game/WorldScenes/low_hp.gdshader" id="12_qumpd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6sb7l"]
+radius = 7.0
+height = 42.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6sb7l"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_02t1f"]
+radius = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4y7yi"]
+shader = ExtResource("12_qumpd")
+shader_parameter/vignette_color = Color(1, 0, 0, 1)
+shader_parameter/intensity = 0.0
+shader_parameter/softness = 0.5
+
+[node name="Player" type="CharacterBody2D" unique_id=1579554805]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_ju6bj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1112005187]
+shape = SubResource("CapsuleShape2D_6sb7l")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1694272472]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+script = ExtResource("7_2a4b6")
+
+[node name="Slot1" type="Node2D" parent="." unique_id=516571184]
+
+[node name="Slot2" type="Node2D" parent="." unique_id=1635196096]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1645014539]
+sprite_frames = SubResource("SpriteFrames_6sb7l")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="StateMachine" type="Node2D" parent="." unique_id=1776396255 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_6sb7l")
+initial_state = NodePath("Idle")
+
+[node name="Run" type="Node2D" parent="StateMachine" unique_id=2005794631]
+script = ExtResource("4_2a4b6")
+
+[node name="Idle" type="Node2D" parent="StateMachine" unique_id=2013286487]
+script = ExtResource("5_8wxpl")
+
+[node name="Jump" type="Node2D" parent="StateMachine" unique_id=2068568062]
+script = ExtResource("6_02t1f")
+
+[node name="Knockback" type="Node2D" parent="StateMachine" unique_id=1787092757]
+script = ExtResource("7_8wxpl")
+
+[node name="Dash" type="Node2D" parent="StateMachine" unique_id=1342875778]
+script = ExtResource("8_8wxpl")
+
+[node name="Attack" type="Node2D" parent="StateMachine" unique_id=1945358889]
+script = ExtResource("9_02t1f")
+
+[node name="Interactable" type="Node2D" parent="StateMachine" unique_id=437308857]
+script = ExtResource("10_w43an")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1877359894]
+offset_left = -6.0
+offset_top = -20.0
+offset_right = 6.0
+offset_bottom = 20.0
+
+[node name="Interact" type="Area2D" parent="." unique_id=321876641]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact" unique_id=1867205170]
+shape = SubResource("CircleShape2D_02t1f")
+
+[node name="EffectManager" type="Node2D" parent="." unique_id=1689483388]
+script = ExtResource("11_ry1fm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=663151929]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1946920030]
+material = SubResource("ShaderMaterial_4y7yi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="area_entered" from="Interact" to="." method="_on_interact_area_entered"]
+[connection signal="area_exited" from="Interact" to="." method="_on_interact_area_exited"]

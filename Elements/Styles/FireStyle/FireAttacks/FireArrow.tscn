@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://1vfpbh57634y"]
+
+[ext_resource type="Script" uid="uid://cl10t65vb1siq" path="res://Elements/Styles/FireStyle/FireAttacks/fire_arrow.gd" id="1_w07ne"]
+[ext_resource type="Texture2D" uid="uid://djxmekji8dcr2" path="res://Assets/Sprites/FireArrow/firearrow1.png" id="2_1lvre"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_74qbo"]
+radius = 7.0
+height = 32.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5lmcl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1lvre")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_qc1v4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cwxao"]
+curve = SubResource("Curve_qc1v4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1oied"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+spread = 180.0
+initial_velocity_max = 15.38
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_cwxao")
+color = Color(2.2303762, 0.32764482, 0, 1)
+
+[node name="Area2D" type="Area2D" unique_id=250479016]
+modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_w07ne")
+speed = 1000.0
+shake_intencity = 7.0
+shake_duration = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=103552538]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_74qbo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=60364165]
+sprite_frames = SubResource("SpriteFrames_5lmcl")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=770881178]
+process_material = SubResource("ParticleProcessMaterial_1oied")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1027858164]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
