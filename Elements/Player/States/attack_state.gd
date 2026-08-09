@@ -2,6 +2,8 @@ extends Player_State
 
 var attack_timer: float = 0.0
 var style_data: Dictionary = {}
+var buffered_attack: Dictionary = {}
+var change_attack: Dictionary = {}
 
 var is_looping: bool = false
 
@@ -39,9 +41,7 @@ func physics_update(delta: float) -> void:
 
 	# 2. ПРОВЕРКА: Можно ли двигаться/прыгать?
 	var dynamic_can_move = false 
-	if character.buffered_attack:
-		print(character.buffered_attack["can_movement"])
-	if "can_movement" in style_data or "can_movement" in character.buffered_attack or "can_movement" in character.change_animation:
+	if "can_movement" in style_data:
 		dynamic_can_move = style_data.can_movement
 
 	# 3. ЛОГИКА ДВИЖЕНИЯ И ПРЫЖКА
@@ -81,7 +81,8 @@ func physics_update(delta: float) -> void:
 			# Перезапускаем состояние Attack с новой анимацией
 			get_parent().change_state(self, "Attack", {
 				"anim_player": next_attack["anim_player"],
-				"anim_name": next_attack["anim_name"]
+				"anim_name": next_attack["anim_name"],
+				"can_movement": next_attack["can_movement"]
 			})
 		else:
 			# Если буфер пуст, возвращаем контроль игроку
@@ -100,7 +101,8 @@ func physics_update(delta: float) -> void:
 	
 		get_parent().change_state(self, "Attack", {
 				"anim_player": next_attack["anim_player"],
-				"anim_name": next_attack["anim_name"]
+				"anim_name": next_attack["anim_name"],
+				"can_movement": next_attack["can_movement"]
 			})
 	
 	# если игрок нажал на кнопку рывка то отменяем анимацию атаки и переходим в состояние dash
