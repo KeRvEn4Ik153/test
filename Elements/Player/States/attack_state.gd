@@ -16,7 +16,7 @@ func enter(data: Dictionary = {}) -> void:
 	if data.has("anim_player") and data.has("anim_name"):
 		character.anim_player = data["anim_player"]
 		anim_name = data["anim_name"]
-			
+		print(anim_name)
 		character.anim_player.play(anim_name)
 		
 		# если анимция зациклена то игрок будет в состоянии attack вечно
@@ -38,8 +38,10 @@ func physics_update(delta: float) -> void:
 		character.velocity += character.get_gravity() * delta
 
 	# 2. ПРОВЕРКА: Можно ли двигаться/прыгать?
-	var dynamic_can_move = false
-	if "can_movement" in style_data:
+	var dynamic_can_move = false 
+	if character.buffered_attack:
+		print(character.buffered_attack["can_movement"])
+	if "can_movement" in style_data or "can_movement" in character.buffered_attack or "can_movement" in character.change_animation:
 		dynamic_can_move = style_data.can_movement
 
 	# 3. ЛОГИКА ДВИЖЕНИЯ И ПРЫЖКА

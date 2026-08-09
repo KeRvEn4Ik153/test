@@ -34,6 +34,8 @@ func _ready() -> void:
 		area.body_entered.connect(_on_area_2d_body_entered)
 
 func _process(delta: float) -> void:
+	if attack_resource:
+		player_node.state_of_attack = attack_resource.state_of_attack
 	for key in cooldowns:
 		cooldowns[key] -= delta
 
@@ -121,3 +123,6 @@ func inflicting_effect(effect, duration: float, effect_damage: float):
 func camera_shake(shake_intencity: float, shake_duration: float, is_decaying: bool):
 	if player_camera and player_camera.has_method("apply_shake"):
 		player_camera.apply_shake(shake_intencity, shake_duration, is_decaying)
+
+func change_attack_state(state: String):
+	attack_resource.state_of_attack = state

@@ -4,10 +4,9 @@
 
 [resource]
 script = ExtResource("1_llste")
-id = "fire_attacks"
+id = "fire_attack1"
 animation_name = "attack1"
-camera_shake_power = 0.2
-camera_shake_time = 0.2
+mana_cost = 30.0
 cooldown = 0.3
 damage = 100.0
 knockback_power = 150.0

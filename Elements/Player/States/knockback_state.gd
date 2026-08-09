@@ -15,7 +15,8 @@ func physics_update(delta: float) -> void:
 	if not character.is_on_floor():
 		character.velocity += character.get_gravity() * delta
 		
-	character.anim_player.stop()
+	if character.anim_player:
+		character.anim_player.stop()
 	
 	# Тормозим по горизонтали
 	character.velocity.x = move_toward(character.velocity.x, 0, 1000.0 * delta)

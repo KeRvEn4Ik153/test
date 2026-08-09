@@ -23,3 +23,4 @@ class_name AttackData
 @export var which_button_to_attack: String = ""
 @export var after_which_attack: String = ""
 @export var change_attack: bool = false
+@export var state_of_attack: String = "windup" # windup active recovery

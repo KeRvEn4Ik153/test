@@ -39,6 +39,8 @@ var subject
 var buffered_attack: Dictionary = {}
 var change_animation: Dictionary = {}
 
+var state_of_attack: String = ""
+
 func _ready() -> void:
 	# создаем копию статов
 	stats = player_stats.duplicate()
@@ -122,7 +124,24 @@ func _process(delta: float):
 
 				# ЕСЛИ ИГРОК УЖЕ АТАКУЕТ: записываем комбо в буфер наперед	
 				if state_machine.current_state.name == "Attack":
-					print(cast_result["change_attack"])
+					print(cast_result["can_movement"])
+					if state_of_attack == "recovery":
+						change_animation = {
+							"anim_player": cast_result["anim_player"],
+							"anim_name": cast_result["anim_name"],
+							"mana_cost": cast_result["mana_cost"],
+							"can_movement": cast_result["can_movement"]
+						}
+						return
+					if state_of_attack == "perfect_window":
+						print("идельная смена атаки")
+						change_animation = {
+							"anim_player": cast_result["anim_player"],
+							"anim_name": cast_result["anim_name"],
+							"mana_cost": cast_result["mana_cost"],
+							"can_movement": cast_result["can_movement"]
+						}
+						return
 					if not cast_result["change_attack"]:
 						buffered_attack = {
 							"anim_player": cast_result["anim_player"],
@@ -130,13 +149,15 @@ func _process(delta: float):
 							"mana_cost": cast_result["mana_cost"],
 							"can_movement": cast_result["can_movement"],
 						}
-					else:
+						return
+					if cast_result["change_attack"]:
 						change_animation = {
 							"anim_player": cast_result["anim_player"],
 							"anim_name": cast_result["anim_name"],
 							"mana_cost": cast_result["mana_cost"],
 							"can_movement": cast_result["can_movement"]
 						}
+						return
 				else:
 							# ЕСЛИ ИГРОК НЕ АТАКУЕТ: выполняем комбо сразу
 					if cast_result["mana_cost"]:
