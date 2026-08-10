@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://c2enni8uirfcp"]
 
-[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_kgtea"]
+[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_m6nn5"]
 
 [resource]
-script = ExtResource("1_kgtea")
-id = "fire_bow_charge"
+script = ExtResource("1_m6nn5")
+id = "bow_charge"
 animation_name = "bow_charge"
 mana_cost = 35.0
 type_damage = "knockback"

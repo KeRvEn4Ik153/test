@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dc7b5yv68dn8s"]
 
 [ext_resource type="Texture2D" uid="uid://dpgxus8ej03n8" path="res://Assets/Sprites/FireBallMagic/fireball1.png" id="1_7tpl6"]
-[ext_resource type="PackedScene" uid="uid://eoat6ak16k6v" path="res://Elements/Styles/FireStyle/FireStyle.tscn" id="2_maxow"]
+[ext_resource type="PackedScene" uid="uid://eoat6ak16k6v" path="res://Elements/Styles/PrideStyle/PrideStyle.tscn" id="2_maxow"]
 [ext_resource type="Script" uid="uid://dxmj1ahjqj2it" path="res://Classes/item_resource.gd" id="3_bbn5n"]
 
 [resource]

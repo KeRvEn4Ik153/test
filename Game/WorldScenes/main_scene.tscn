@@ -10,12 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://b2mhmsxgvdquu" path="res://Game/WorldScenes/hud.tscn" id="9_drdbv"]
 [ext_resource type="Script" uid="uid://dxmj1ahjqj2it" path="res://Classes/item_resource.gd" id="12_8oopc"]
 [ext_resource type="Resource" uid="uid://dc7b5yv68dn8s" path="res://Resources/StyleResources/fire_style_data.tres" id="13_imf3v"]
-[ext_resource type="Resource" uid="uid://5muopdesrt13" path="res://Resources/StyleResources/ice_style_data.tres" id="14_bvy4d"]
 [ext_resource type="PackedScene" uid="uid://624cuql416cx" path="res://Elements/Player/Player.tscn" id="15_3c5gd"]
-[ext_resource type="Resource" uid="uid://c7i7y81kpnefl" path="res://Resources/StyleResources/water_style_data.tres" id="15_lev1d"]
 [ext_resource type="PackedScene" uid="uid://dolm41d2gxv6a" path="res://Elements/Interactable/enter_in_abyss.tscn" id="16_8oopc"]
 [ext_resource type="PackedScene" uid="uid://b6bwlctu80o1x" path="res://Elements/Enemies/Slime/Slime.tscn" id="16_nan5l"]
-[ext_resource type="Resource" uid="uid://d2cqwuncbanj1" path="res://Resources/StyleResources/wind_style_data.tres" id="16_r3ggl"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mihfq"]
 polygon = PackedVector2Array(-16, -13.057743, 16, -13.057743, 16, 16, -16, 16)
@@ -353,7 +350,7 @@ position = Vector2(827, 240)
 
 [node name="HUD" parent="CanvasLayer" unique_id=2110372159 instance=ExtResource("9_drdbv")]
 visible = false
-styles = Array[ExtResource("12_8oopc")]([ExtResource("13_imf3v"), ExtResource("14_bvy4d"), ExtResource("15_lev1d"), ExtResource("16_r3ggl")])
+styles = Array[ExtResource("12_8oopc")]([ExtResource("13_imf3v")])
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1036845371]
 energy = 0.5

@@ -11,20 +11,17 @@ const ZOOM_LEVELS = [
 	Vector2(0.80, 0.80)  # 3-й клик (перед выстрелом)
 ]
 	
-func fire_attacks():
-	return true
-	
 func unic_burn_effect():
 	var new_effect = UnicBurnEffect.new(10.0, 5, 20)
 	player_node.effect_manager.add_effect(new_effect)
 	return true
 
-func fire_bow_charge():
+func bow_charge():
 	bow_stacks = 0
 	camera_shake(0.2, 999999.0, false)
 	return true
 
-func fire_bow_shot():
+func bow_shot():
 	bow_stacks += 1
 	if bow_stacks == 1:
 		camera_shake(0.4, 999999.0, false)

@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://eoat6ak16k6v"]
 
-[ext_resource type="Script" uid="uid://cwyraaw1b0lpa" path="res://Elements/Styles/FireStyle/fire_style.gd" id="1_adhyb"]
-[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="2_cg548"]
-[ext_resource type="PackedScene" uid="uid://cxy77iow85qpc" path="res://Effects/MagicEffects/FireStyleEffects/fire_explosion_effect.tscn" id="3_go7yn"]
-[ext_resource type="Resource" uid="uid://crx3b7ovfatc2" path="res://Elements/Styles/FireStyle/FireAttackResource/cast_fireball.tres" id="3_mcbpv"]
-[ext_resource type="Resource" uid="uid://bonllhnh3c45v" path="res://Elements/Styles/FireStyle/FireAttackResource/fire_attack1.tres" id="4_mcbpv"]
-[ext_resource type="Resource" uid="uid://giqduwmbdmkt" path="res://Elements/Styles/FireStyle/FireAttackResource/fire_attraction.tres" id="5_s8q36"]
-[ext_resource type="Resource" uid="uid://c85nx3vy2j6bo" path="res://Elements/Styles/FireStyle/FireAttackResource/fire_explosion.tres" id="6_s5jhy"]
-[ext_resource type="Resource" uid="uid://d0ipanpdb7u41" path="res://Elements/Styles/FireStyle/FireAttackResource/unic_burn_effect.tres" id="7_p03eh"]
-[ext_resource type="Resource" uid="uid://c2enni8uirfcp" path="res://Elements/Styles/FireStyle/FireAttackResource/fire_bow_charge.tres" id="8_mapqc"]
-[ext_resource type="Resource" uid="uid://ch75ho32r708h" path="res://Elements/Styles/FireStyle/FireAttackResource/fire_bow_shot.tres" id="9_tsnw4"]
-[ext_resource type="Resource" uid="uid://c00rltjfmo13o" path="res://Elements/Styles/FireStyle/FireAttackResource/fire_attack2.tres" id="10_tsnw4"]
+[ext_resource type="Script" uid="uid://cwyraaw1b0lpa" path="res://Elements/Styles/PrideStyle/pride_style.gd" id="1_58gr6"]
+[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="2_qoakm"]
+[ext_resource type="Resource" uid="uid://crx3b7ovfatc2" path="res://Elements/Styles/PrideStyle/PrideAttackResource/cast_fireball.tres" id="3_h65tx"]
+[ext_resource type="Resource" uid="uid://bonllhnh3c45v" path="res://Elements/Styles/PrideStyle/PrideAttackResource/attack1.tres" id="4_sehh4"]
+[ext_resource type="Resource" uid="uid://giqduwmbdmkt" path="res://Elements/Styles/PrideStyle/PrideAttackResource/attraction.tres" id="5_vu6wb"]
+[ext_resource type="Resource" uid="uid://c85nx3vy2j6bo" path="res://Elements/Styles/PrideStyle/PrideAttackResource/explosion.tres" id="6_jf6yy"]
+[ext_resource type="Resource" uid="uid://d0ipanpdb7u41" path="res://Elements/Styles/PrideStyle/PrideAttackResource/unic_burn_effect.tres" id="7_ws7be"]
+[ext_resource type="Resource" uid="uid://c2enni8uirfcp" path="res://Elements/Styles/PrideStyle/PrideAttackResource/bow_charge.tres" id="8_7t72h"]
+[ext_resource type="Resource" uid="uid://ch75ho32r708h" path="res://Elements/Styles/PrideStyle/PrideAttackResource/bow_shot.tres" id="9_844j1"]
+[ext_resource type="Resource" uid="uid://c00rltjfmo13o" path="res://Elements/Styles/PrideStyle/PrideAttackResource/attack2.tres" id="10_4yt41"]
+[ext_resource type="PackedScene" uid="uid://cxy77iow85qpc" path="res://Effects/MagicEffects/FireStyleEffects/fire_explosion_effect.tscn" id="11_sf2tp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_adhyb"]
 
@@ -324,7 +324,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [ExtResource("3_go7yn")],
+"args": [ExtResource("11_sf2tp")],
 "method": &"spawn_effect"
 }]
 }
@@ -386,9 +386,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="FireStyle" type="Node2D" unique_id=2071520491]
-script = ExtResource("1_adhyb")
-attack_resources = Array[ExtResource("2_cg548")]([ExtResource("3_mcbpv"), ExtResource("4_mcbpv"), ExtResource("5_s8q36"), ExtResource("6_s5jhy"), ExtResource("7_p03eh"), ExtResource("8_mapqc"), ExtResource("9_tsnw4"), ExtResource("10_tsnw4")])
+[node name="PrideStyle" type="Node2D" unique_id=2071520491]
+script = ExtResource("1_58gr6")
+attack_resources = Array[ExtResource("2_qoakm")]([ExtResource("3_h65tx"), ExtResource("4_sehh4"), ExtResource("5_vu6wb"), ExtResource("6_jf6yy"), ExtResource("7_ws7be"), ExtResource("8_7t72h"), ExtResource("9_844j1"), ExtResource("10_4yt41")])
 element_type = "fire"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=326263827]

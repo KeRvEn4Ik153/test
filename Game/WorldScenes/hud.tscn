@@ -19,47 +19,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cinpd")
 
-[node name="HotBar" type="HBoxContainer" parent="." unique_id=1774302788]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-alignment = 1
-
-[node name="Slot1" type="PanelContainer" parent="HotBar" unique_id=1025849625]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HotBar/Slot1" unique_id=1533845160]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-text = "1"
-
-[node name="Icon" type="TextureRect" parent="HotBar/Slot1" unique_id=433466322]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Slot2" type="PanelContainer" parent="HotBar" unique_id=1929728112]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HotBar/Slot2" unique_id=1166280059]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-text = "2"
-
-[node name="Icon" type="TextureRect" parent="HotBar/Slot2" unique_id=311467748]
-layout_mode = 2
-expand_mode = 1
-stretch_mode = 5
-
 [node name="BarsContainer" type="VBoxContainer" parent="." unique_id=1479677107]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 1

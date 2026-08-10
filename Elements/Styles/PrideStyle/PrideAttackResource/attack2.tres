@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://c00rltjfmo13o"]
 
-[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_1lagg"]
+[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_1dcqp"]
 
 [resource]
-script = ExtResource("1_1lagg")
-id = "fire_attack2"
+script = ExtResource("1_1dcqp")
+id = "attack2"
 animation_name = "attack2"
 cooldown = 0.3
 damage = 20.0

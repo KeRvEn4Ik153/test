@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://ch75ho32r708h"]
 
-[ext_resource type="PackedScene" uid="uid://1vfpbh57634y" path="res://Elements/Styles/FireStyle/FireAttacks/FireArrow.tscn" id="1_c64sn"]
-[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_kgap8"]
+[ext_resource type="PackedScene" uid="uid://1vfpbh57634y" path="res://Elements/Styles/PrideStyle/PrideAttacks/FireArrow.tscn" id="1_dd0to"]
+[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="2_o7lhp"]
 
 [resource]
-script = ExtResource("1_kgap8")
-id = "fire_bow_shot"
+script = ExtResource("2_o7lhp")
+id = "bow_shot"
 animation_name = "bow_shot"
 mana_cost = 30.0
 damage = 40.0
@@ -13,7 +13,7 @@ knockback_power = 200.0
 stun_time = 1.0
 type_damage = "knockback"
 element_type = "fire"
-projectile_scene = ExtResource("1_c64sn")
+projectile_scene = ExtResource("1_dd0to")
 can_movement = true
 which_button_to_attack = "left_skill"
 after_which_attack = "bow_charge"

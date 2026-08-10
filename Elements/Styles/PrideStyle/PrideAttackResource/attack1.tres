@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://bonllhnh3c45v"]
 
-[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_llste"]
+[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_n7hpo"]
 
 [resource]
-script = ExtResource("1_llste")
-id = "fire_attack1"
+script = ExtResource("1_n7hpo")
+id = "attack1"
 animation_name = "attack1"
 mana_cost = 30.0
 cooldown = 0.3

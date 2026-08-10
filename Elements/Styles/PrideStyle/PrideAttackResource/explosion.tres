@@ -1,13 +1,11 @@
 [gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://c85nx3vy2j6bo"]
 
-[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_01hru"]
+[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_mf1kk"]
 
 [resource]
-script = ExtResource("1_01hru")
-id = "fire_explosion"
+script = ExtResource("1_mf1kk")
+id = "explosion"
 animation_name = "explosion"
-camera_shake_power = 0.3
-camera_shake_time = 0.2
 mana_cost = 40.0
 cooldown = 2.0
 damage = 35.0

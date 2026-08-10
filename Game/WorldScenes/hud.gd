@@ -1,11 +1,5 @@
 extends Control
 
-@onready var icon1: TextureRect = $HotBar/Slot1/Icon
-@onready var icon2: TextureRect = $HotBar/Slot2/Icon 
-
-@onready var slot1: PanelContainer = $HotBar/Slot1
-@onready var slot2: PanelContainer = $HotBar/Slot2
-
 @onready var hpbar: ProgressBar = $BarsContainer/HealthBar
 @onready var mpbar: ProgressBar = $BarsContainer/ManaBar
 
@@ -29,23 +23,6 @@ extends Control
 @export var styles: Array[ItemData] = []
 
 var button_id
-
-func render_hotbar_icons(texture1 ,texture2):
-	if texture1:
-		icon1.texture = texture1
-	if texture2:
-		icon2.texture = texture2
-		
-func set_current_slot(index: int):
-	
-	slot1.modulate = Color(1.0, 1.0, 1.0, 1.0)
-	slot2.modulate = Color(1.0, 1.0, 1.0, 1.0)
-	
-	if index > -1:
-		if index == 0:
-			slot1.modulate = Color(0.393, 0.393, 0.393, 1.0)
-		if index == 1:
-			slot2.modulate = Color(0.393, 0.393, 0.393, 1.0)
 
 func setup_bar(max_hp: float, max_mp: float) -> void:
 	if hpbar and mpbar:

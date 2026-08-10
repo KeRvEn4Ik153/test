@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cpno0sk2xf2vl"]
 
-[ext_resource type="Script" uid="uid://b4tnngo8slvpa" path="res://Elements/Styles/FireStyle/FireAttacks/fire_ball.gd" id="1_qc1v4"]
+[ext_resource type="Script" uid="uid://b4tnngo8slvpa" path="res://Elements/Styles/PrideStyle/PrideAttacks/fire_ball.gd" id="1_qc1v4"]
 [ext_resource type="Texture2D" uid="uid://dpgxus8ej03n8" path="res://Assets/Sprites/FireBallMagic/fireball1.png" id="2_pywnf"]
 [ext_resource type="Texture2D" uid="uid://bowryi2s5xtnh" path="res://Assets/Sprites/FireBallMagic/fireball2.png" id="3_vd6uw"]
 [ext_resource type="Texture2D" uid="uid://bml420835b0kf" path="res://Assets/Sprites/FireBallMagic/fireball3.png" id="4_qpxn2"]

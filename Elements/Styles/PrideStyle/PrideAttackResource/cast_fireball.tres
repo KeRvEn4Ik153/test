@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://crx3b7ovfatc2"]
 
-[ext_resource type="PackedScene" uid="uid://cpno0sk2xf2vl" path="res://Elements/Styles/FireStyle/FireAttacks/FireBall.tscn" id="1_durv2"]
+[ext_resource type="PackedScene" uid="uid://cpno0sk2xf2vl" path="res://Elements/Styles/PrideStyle/PrideAttacks/FireBall.tscn" id="1_durv2"]
 [ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="2_km5kr"]
 
 [resource]

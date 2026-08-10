@@ -3,17 +3,16 @@ class_name Player
 
 var dash_cooldown_timer: float = 0.0
 
-@export var available_magics: Array[ItemData] = []
+@export var available_style: ItemData
 @export var combo_window: float = 0.4
 
 @onready var hud: Control = $"../CanvasLayer/HUD"
-@onready var current_slot: Array[Node2D] = [$Slot1, $Slot2, $Slot3]
+@onready var current_slot: Node2D = $Slot1
 @onready var camera: Camera2D = $Camera2D
 @onready var animation_sprites: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: Node = $StateMachine
 @onready var effect_manager: Node2D = $EffectManager
 
-@onready var empty_slot = load("res://Resources/StyleResources/empty_item.tres")
 @onready var player_stats: DefaultPlayerStatsData = load("res://Elements/Player/default_player_stats.tres")
 var stats
 
@@ -56,13 +55,10 @@ func _ready() -> void:
 	combo_timer.one_shot = true
 	combo_timer.timeout.connect(func(): local_history.clear())
 	
-	for i in range(2):
-		available_magics.append(empty_slot)
 	
 	# загрузка интерфейса
 	await get_tree().process_frame
 	if hud:
-		hud.render_hotbar_icons(available_magics[0].icon, available_magics[1].icon)
 		hud.setup_bar(stats.max_health, stats.max_mana)
 		
 		# ПОДКЛЮЧАЕМ СИГНАЛЫ РЕСУРСА К HUD:
@@ -104,14 +100,6 @@ func _process(delta: float):
 		
 	if stats.current_health < stats.max_health:
 		stats.current_health += stats.health_regen * delta
-		
-	# смена оружия
-	if Input.is_key_pressed(KEY_1):
-		weapon = equip_slot(0)
-		if hud: hud.set_current_slot(0)
-	if Input.is_key_pressed(KEY_2):
-		weapon = equip_slot(1)
-		if hud: hud.set_current_slot(1)
 				
 	# использование стилей
 	if trigger_actions.any(func(action): return Input.is_action_just_pressed(action)):
@@ -261,20 +249,21 @@ func calculate_damage(base_damage: float, resists: Dictionary, element: String) 
 	return {"damage": final_damage_int, "is_crit": is_crit}
 	
 # добавление стилей в слоты (надо сделать всего один слот под стиль, то есть убрать хотбар)
-func equip_slot(index: int):
-	if current_slot[index].get_child_count() == 0:
-		if available_magics[index].style_scene:
-			var magic = available_magics[index].style_scene.instantiate()
-			current_slot[index].add_child(magic)
-	if current_slot[index].get_child_count() > 0:
-		return current_slot[index].get_child(0)
+func equip_slot():
+	if current_slot.get_child_count() == 0:
+		if available_style.style_scene:
+			var magic = available_style.style_scene.instantiate()
+			current_slot.add_child(magic)
+	if current_slot.get_child_count() > 0:
+		return current_slot.get_child(0)
 		
 # заполнение слотов хотбара
 func fill_slot(path_item):
 	style = load(path_item)
-	available_magics.pop_at(0)
-	available_magics.append(style)
-	if hud: hud.render_hotbar_icons(available_magics[0].icon, available_magics[1].icon)
+	available_style = null
+	available_style = style
+	weapon = equip_slot()
+
 	
 #  отображение кнопки взаимодействия с интерактивными предметами 
 func _on_interact_area_entered(area: Area2D) -> void:
