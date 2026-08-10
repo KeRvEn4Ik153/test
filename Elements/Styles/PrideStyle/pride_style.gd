@@ -37,6 +37,7 @@ func bow_shot():
 		return true
 	return false
 
+# функция отдаления камеры
 func animate_camera_zoom(target_zoom: Vector2, duration: float = 0.2) -> void:
 	# Если предыдущая анимация камеры еще идет — убиваем её, чтобы не было конфликтов
 	if camera_tween and camera_tween.is_valid():

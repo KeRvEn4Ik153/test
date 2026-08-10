@@ -4,9 +4,11 @@
 
 [node name="Control" type="Control" unique_id=1698249076]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 480.0
-offset_bottom = 270.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_yltbk")
 
 [node name="MainPanel" type="PanelContainer" parent="." unique_id=1912725007]
@@ -30,7 +32,12 @@ text = "KEY_PLAY"
 layout_mode = 2
 text = "KEY_SETTINGS"
 
+[node name="Quit" type="Button" parent="MainPanel/VBoxContainer" unique_id=1395310228]
+layout_mode = 2
+text = "KEY_QUIT"
+
 [node name="SettingsPanel" type="PanelContainer" parent="." unique_id=1502388524]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,6 +63,7 @@ size_flags_vertical = 0
 text = "KEY_BACK"
 
 [node name="LanguagesPanel" type="PanelContainer" parent="." unique_id=1386252451]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,6 +94,7 @@ text = "KEY_BACK"
 
 [connection signal="pressed" from="MainPanel/VBoxContainer/Play" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MainPanel/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainPanel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="SettingsPanel/VBoxContainer/Languages" to="." method="_on_languages_pressed"]
 [connection signal="pressed" from="SettingsPanel/backsettings" to="." method="_on_backsettings_pressed"]
 [connection signal="pressed" from="LanguagesPanel/VBoxContainer/ru" to="." method="_on_ru_pressed"]

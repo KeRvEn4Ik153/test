@@ -61,6 +61,7 @@ func try_cast(input_button: String, player_mana: float, spawn_position: Vector2,
 			var current_cooldown = cooldowns.get(res.id, 0.0)
 			# проверка хватает ли у игрока маны 
 			if player_mana >= res.mana_cost and current_cooldown <= 0:
+				# тут проверка есть ли функция у атаки (функция должна называться как сама атака)
 				if has_method(res.id):
 					var result = call(res.id)
 					if not result:

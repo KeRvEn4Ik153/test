@@ -37,3 +37,6 @@ func _on_backlanguages_pressed() -> void:
 func _on_backsettings_pressed() -> void:
 	settings_panel.visible = false
 	main_panel.visible = true
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
