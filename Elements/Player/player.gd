@@ -16,6 +16,8 @@ var dash_cooldown_timer: float = 0.0
 @onready var player_stats: DefaultPlayerStatsData = load("res://Elements/Player/default_player_stats.tres")
 var stats
 
+@onready var UI_container = $ItemUI
+
 var player_direction: String = "right"
 var look_up_down: String = "forward"
 var weapon
@@ -110,53 +112,8 @@ func _process(delta: float):
 				local_history.clear()
 				combo_timer.stop()
 
-				# ЕСЛИ ИГРОК УЖЕ АТАКУЕТ: записываем комбо в буфер наперед	
-				if state_machine.current_state.name == "Attack":
-					print(cast_result["can_movement"])
-					if state_of_attack == "recovery":
-						change_animation = {
-							"anim_player": cast_result["anim_player"],
-							"anim_name": cast_result["anim_name"],
-							"mana_cost": cast_result["mana_cost"],
-							"can_movement": cast_result["can_movement"]
-						}
-						return
-					if state_of_attack == "perfect_window":
-						print("идельная смена атаки")
-						change_animation = {
-							"anim_player": cast_result["anim_player"],
-							"anim_name": cast_result["anim_name"],
-							"mana_cost": cast_result["mana_cost"],
-							"can_movement": cast_result["can_movement"]
-						}
-						return
-					if not cast_result["change_attack"]:
-						buffered_attack = {
-							"anim_player": cast_result["anim_player"],
-							"anim_name": cast_result["anim_name"],
-							"mana_cost": cast_result["mana_cost"],
-							"can_movement": cast_result["can_movement"],
-						}
-						return
-					if cast_result["change_attack"]:
-						change_animation = {
-							"anim_player": cast_result["anim_player"],
-							"anim_name": cast_result["anim_name"],
-							"mana_cost": cast_result["mana_cost"],
-							"can_movement": cast_result["can_movement"]
-						}
-						return
-				else:
-							# ЕСЛИ ИГРОК НЕ АТАКУЕТ: выполняем комбо сразу
-					if cast_result["mana_cost"]:
-						stats.current_mana -= cast_result["mana_cost"]
-									
-					if cast_result.has("anim_name") and cast_result["anim_name"] != "":
-						state_machine.change_state(state_machine.current_state, "Attack", {
-							"anim_player": cast_result["anim_player"],
-							"anim_name": cast_result["anim_name"],
-							"can_movement": cast_result["can_movement"]
-						})
+				if weapon.has_method("what_to_do_with_attack"):
+					weapon.what_to_do_with_attack(cast_result)
 						
 	# уменьшаем таймер неуязвимости
 	if get_damage_timer > 0:	
@@ -187,8 +144,8 @@ func _add_to_local_history(action_name: String) -> void:
 		local_history.append(tr("KEY_LEFT_SKILL"))
 	if action_name == "right_skill":
 		local_history.append(tr("KEY_RIGHT_SKILL"))
+		
 # получение игроком урона
-
 func take_player_damage(shake_intencity, shake_duration, amount: int, enemy_position: Vector2 = Vector2.ZERO) -> void:
 	if get_damage_timer <= 0:
 		stats.current_health -= amount
@@ -227,7 +184,8 @@ func self_knockback(push_force: float, attack_pos: Vector2) -> void:
 # подсчет урона который нанес игрок
 func calculate_damage(base_damage: float, resists: Dictionary, element: String) -> Dictionary:
 	# проверка на бонусы урона
-	var modified_base: float = base_damage * (1.0 + (stats.damage_bonus / 100.0))
+	var damage_bonus = stats.get_damage_bonus()
+	var modified_base: float = base_damage * (1.0 + (damage_bonus / 100.0))
 	
 	var final_damage: float = modified_base
 	var is_crit: bool = false
@@ -264,7 +222,11 @@ func fill_slot(path_item):
 	available_style = style
 	weapon = equip_slot()
 
-	
+	var item_ui = weapon.UI_scene.instantiate()
+	UI_container.add_child(item_ui)
+
+	weapon.UI = item_ui
+
 #  отображение кнопки взаимодействия с интерактивными предметами 
 func _on_interact_area_entered(area: Area2D) -> void:
 	if area is Interactable:

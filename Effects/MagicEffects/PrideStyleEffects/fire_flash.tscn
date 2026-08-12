@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bfijbksqbpd7r"]
+
+[ext_resource type="Script" uid="uid://bhrqy4la0vif5" path="res://Effects/MagicEffects/PrideStyleEffects/fire_flash.gd" id="1_7q5ti"]
+[ext_resource type="Texture2D" uid="uid://crhencud3ycms" path="res://Assets/Sprites/Lights/256x256 textures (17).png" id="1_rfu5q"]
+
+[sub_resource type="Curve" id="Curve_svm6s"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.47191018), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1wbtr"]
+curve = SubResource("Curve_svm6s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7q5ti"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_1wbtr")
+color = Color(2.100181, 0.7738208, 0, 1)
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 9.879
+
+[node name="Node2D" type="Node2D" unique_id=695570111]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1419017485]
+emitting = false
+amount = 20
+lifetime = 0.2
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7q5ti")
+script = ExtResource("1_7q5ti")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=461945516]
+position = Vector2(235, 188)
+scale = Vector2(0.3, 0.3)
+energy = 3.0
+texture = ExtResource("1_rfu5q")

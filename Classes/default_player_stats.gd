@@ -23,6 +23,8 @@ signal mana_changed(current, max_val)
 @export var crit_chance: float = 5.0
 
 @export var damage_bonus: float = 0.0
+@export var stacks: int = 0
+@export var stack_bonus: float = 2.5
 
 @export var current_health: float = 0.0:
 	set(value):
@@ -33,3 +35,7 @@ signal mana_changed(current, max_val)
 	set(value):
 		current_mana = clamp(value, 0.0, max_mana)
 		mana_changed.emit(current_mana, max_mana) 
+
+func get_damage_bonus():
+	damage_bonus = stacks * stack_bonus	
+	return damage_bonus

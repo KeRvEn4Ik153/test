@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dp177thd25i2g"]
+
+[ext_resource type="Script" uid="uid://c3tejmit2mutb" path="res://Elements/Styles/PrideStyle/UI/pride_ui.gd" id="1_1loyc"]
+
+[node name="PrideUI" type="Control" unique_id=1792509981]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1loyc")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1672733895]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -30.0
+offset_right = 100.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StacksBar" type="ProgressBar" parent="PanelContainer" unique_id=1375704632]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 0.0
+show_percentage = false
+
+[node name="StacksLabel" type="Label" parent="PanelContainer/StacksBar" unique_id=771973459]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -10,7 +10,91 @@ const ZOOM_LEVELS = [
 	Vector2(0.88, 0.88), # 2-й клик
 	Vector2(0.80, 0.80)  # 3-й клик (перед выстрелом)
 ]
-	
+
+# переменые для новой механики
+var will: int = 0
+var life_time_of_stack: float = 10.0
+
+func _ready() -> void:
+	super._ready()
+
+func _process(delta: float) -> void:
+	super._process(delta)
+
+	life_time_of_stack -= delta
+	if life_time_of_stack <= 0:
+		managment_stacks(false, false)
+
+# переопределяем функцию с базового класса для добавления новой механики
+func what_to_do_with_attack(cast_result):
+	# ЕСЛИ ИГРОК УЖЕ АТАКУЕТ: записываем комбо в буфер наперед	
+				if player_node.state_machine.current_state.name == "Attack":
+					if player_node.state_of_attack == "recovery":
+						player_node.change_animation = {
+							"anim_player": cast_result["anim_player"],
+							"anim_name": cast_result["anim_name"],
+							"mana_cost": cast_result["mana_cost"],
+							"can_movement": cast_result["can_movement"]
+						}
+						managment_stacks(false, true)
+						return
+					if player_node.state_of_attack == "perfect_window":
+						player_node.change_animation = {
+							"anim_player": cast_result["anim_player"],
+							"anim_name": cast_result["anim_name"],
+							"mana_cost": cast_result["mana_cost"],
+							"can_movement": cast_result["can_movement"]
+						}
+						managment_stacks(true, false)
+						life_time_of_stack = 10.0
+						return
+					if cast_result["change_attack"]:
+						player_node.change_animation = {
+							"anim_player": cast_result["anim_player"],
+							"anim_name": cast_result["anim_name"],
+							"mana_cost": cast_result["mana_cost"],
+							"can_movement": cast_result["can_movement"]
+						}
+						return
+					if not cast_result["change_attack"]:
+						player_node.buffered_attack = {
+							"anim_player": cast_result["anim_player"],
+							"anim_name": cast_result["anim_name"],
+							"mana_cost": cast_result["mana_cost"],
+							"can_movement": cast_result["can_movement"],
+						}
+						managment_stacks(false, true)
+						return
+				else:
+							# ЕСЛИ ИГРОК НЕ АТАКУЕТ: выполняем комбо сразу
+					if cast_result["mana_cost"]:
+						player_node.stats.current_mana -= cast_result["mana_cost"]
+									
+					if cast_result.has("anim_name") and cast_result["anim_name"] != "":
+						player_node.state_machine.change_state(player_node.state_machine.current_state, "Attack", {
+							"anim_player": cast_result["anim_player"],
+							"anim_name": cast_result["anim_name"],
+							"can_movement": cast_result["can_movement"]
+						})
+
+func managment_stacks(plus: bool, clean: bool):
+	if clean:
+		player_node.stats.stacks -= will
+		will = 0
+		UI.update_stacks(will)
+		return
+	if plus:
+		if will < 10:
+			will += 1
+			player_node.stats.stacks += 1
+			UI.update_stacks(will)
+	if not plus:
+		if will > 0:
+			will -= 1
+			player_node.stats.stacks -= 1
+			UI.update_stacks(will)
+		
+
 func unic_burn_effect():
 	var new_effect = UnicBurnEffect.new(10.0, 5, 20)
 	player_node.effect_manager.add_effect(new_effect)

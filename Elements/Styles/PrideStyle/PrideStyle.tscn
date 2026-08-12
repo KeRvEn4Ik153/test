@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://eoat6ak16k6v"]
 
 [ext_resource type="Script" uid="uid://cwyraaw1b0lpa" path="res://Elements/Styles/PrideStyle/pride_style.gd" id="1_58gr6"]
+[ext_resource type="PackedScene" uid="uid://dp177thd25i2g" path="res://Elements/Styles/PrideStyle/UI/PrideUI.tscn" id="2_h65tx"]
 [ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="2_qoakm"]
 [ext_resource type="Resource" uid="uid://crx3b7ovfatc2" path="res://Elements/Styles/PrideStyle/PrideAttackResource/cast_fireball.tres" id="3_h65tx"]
 [ext_resource type="Resource" uid="uid://bonllhnh3c45v" path="res://Elements/Styles/PrideStyle/PrideAttackResource/attack1.tres" id="4_sehh4"]
@@ -10,60 +11,10 @@
 [ext_resource type="Resource" uid="uid://c2enni8uirfcp" path="res://Elements/Styles/PrideStyle/PrideAttackResource/bow_charge.tres" id="8_7t72h"]
 [ext_resource type="Resource" uid="uid://ch75ho32r708h" path="res://Elements/Styles/PrideStyle/PrideAttackResource/bow_shot.tres" id="9_844j1"]
 [ext_resource type="Resource" uid="uid://c00rltjfmo13o" path="res://Elements/Styles/PrideStyle/PrideAttackResource/attack2.tres" id="10_4yt41"]
-[ext_resource type="PackedScene" uid="uid://cxy77iow85qpc" path="res://Effects/MagicEffects/FireStyleEffects/fire_explosion_effect.tscn" id="11_sf2tp"]
+[ext_resource type="PackedScene" uid="uid://cxy77iow85qpc" path="res://Effects/MagicEffects/PrideStyleEffects/fire_explosion_effect.tscn" id="11_sf2tp"]
+[ext_resource type="PackedScene" uid="uid://bfijbksqbpd7r" path="res://Effects/MagicEffects/PrideStyleEffects/fire_flash.tscn" id="12_h65tx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_adhyb"]
-
-[sub_resource type="Animation" id="Animation_50eic"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionShape2D:shape")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("RectangleShape2D_adhyb")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_cg548"]
 resource_name = "attack1"
@@ -143,6 +94,20 @@ tracks/4/keys = {
 "method": &"change_attack_state"
 }]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [ExtResource("12_h65tx")],
+"method": &"spawn_effect"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_5x8rc"]
 resource_name = "attack2"
@@ -220,6 +185,20 @@ tracks/4/keys = {
 }, {
 "args": [""],
 "method": &"change_attack_state"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [ExtResource("12_h65tx")],
+"method": &"spawn_effect"
 }]
 }
 
@@ -367,7 +346,6 @@ length = 0.1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mcbpv"]
 _data = {
-&"RESET": SubResource("Animation_50eic"),
 &"attack1": SubResource("Animation_cg548"),
 &"attack2": SubResource("Animation_5x8rc"),
 &"attraction": SubResource("Animation_mcbpv"),
@@ -390,6 +368,7 @@ animations = [{
 script = ExtResource("1_58gr6")
 attack_resources = Array[ExtResource("2_qoakm")]([ExtResource("3_h65tx"), ExtResource("4_sehh4"), ExtResource("5_vu6wb"), ExtResource("6_jf6yy"), ExtResource("7_ws7be"), ExtResource("8_7t72h"), ExtResource("9_844j1"), ExtResource("10_4yt41")])
 element_type = "fire"
+UI_scene = ExtResource("2_h65tx")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=326263827]
 collision_layer = 0

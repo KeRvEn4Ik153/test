@@ -18,7 +18,6 @@ func enter(data: Dictionary = {}) -> void:
 	if data.has("anim_player") and data.has("anim_name"):
 		character.anim_player = data["anim_player"]
 		anim_name = data["anim_name"]
-		print(anim_name)
 		character.anim_player.play(anim_name)
 		
 		# если анимция зациклена то игрок будет в состоянии attack вечно

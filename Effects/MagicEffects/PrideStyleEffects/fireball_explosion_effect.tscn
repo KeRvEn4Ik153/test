@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b26y66ulnurop"]
 
-[ext_resource type="Script" uid="uid://creyy57mwu7up" path="res://Effects/MagicEffects/FireStyleEffects/fireball_explosion_effect.gd" id="1_svm6s"]
+[ext_resource type="Script" uid="uid://creyy57mwu7up" path="res://Effects/MagicEffects/PrideStyleEffects/fireball_explosion_effect.gd" id="1_svm6s"]
 
 [sub_resource type="Curve" id="Curve_svm6s"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.47191018), 0.0, 0.0, 0, 0]

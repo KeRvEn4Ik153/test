@@ -10,7 +10,7 @@ var time_of_stun: float = 0.0
 var damage_type: String = ""
 var element_type: String = ""
 
-@export var explosion_scene: PackedScene = preload("res://Effects/MagicEffects/FireStyleEffects/fireball_explosion_effect.tscn")
+@export var explosion_scene: PackedScene = preload("res://Effects/MagicEffects/PrideStyleEffects/fireball_explosion_effect.tscn")
 
 @export var shake_intencity: float = 0.0
 @export var shake_duration: float = 0.2

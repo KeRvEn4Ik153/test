@@ -22,6 +22,9 @@ var last_target_position: Vector2 = Vector2.ZERO
 var enemy_effect_manager = null
 var inflict_effect = null
 
+@export var UI_scene: PackedScene
+var UI
+
 func _ready() -> void:
 	player_node = get_parent().get_parent()
 	manager = player_node.get_node("EffectManager")
@@ -84,6 +87,54 @@ func try_cast(input_button: String, player_mana: float, spawn_position: Vector2,
 				}
 	# на всякий случай что бы не было вылетов и ошибок
 	return {"is_combo": false, "mana_cost": 0.0}
+
+# функция для проверки что делать с атакой
+func what_to_do_with_attack(cast_result):
+	# ЕСЛИ ИГРОК УЖЕ АТАКУЕТ: записываем комбо в буфер наперед	
+				if player_node.state_machine.current_state.name == "Attack":
+					if player_node.state_of_attack == "recovery":
+						player_node.change_animation = {
+							"anim_player": cast_result["anim_player"],
+							"anim_name": cast_result["anim_name"],
+							"mana_cost": cast_result["mana_cost"],
+							"can_movement": cast_result["can_movement"]
+						}
+						return
+					if player_node.state_of_attack == "perfect_window":
+						player_node.change_animation = {
+							"anim_player": cast_result["anim_player"],
+							"anim_name": cast_result["anim_name"],
+							"mana_cost": cast_result["mana_cost"],
+							"can_movement": cast_result["can_movement"]
+						}
+						return
+					if not cast_result["change_attack"]:
+						player_node.buffered_attack = {
+							"anim_player": cast_result["anim_player"],
+							"anim_name": cast_result["anim_name"],
+							"mana_cost": cast_result["mana_cost"],
+							"can_movement": cast_result["can_movement"],
+						}
+						return
+					if cast_result["change_attack"]:
+						player_node.change_animation = {
+							"anim_player": cast_result["anim_player"],
+							"anim_name": cast_result["anim_name"],
+							"mana_cost": cast_result["mana_cost"],
+							"can_movement": cast_result["can_movement"]
+						}
+						return
+				else:
+							# ЕСЛИ ИГРОК НЕ АТАКУЕТ: выполняем комбо сразу
+					if cast_result["mana_cost"]:
+						player_node.stats.current_mana -= cast_result["mana_cost"]
+									
+					if cast_result.has("anim_name") and cast_result["anim_name"] != "":
+						player_node.state_machine.change_state(player_node.state_machine.current_state, "Attack", {
+							"anim_player": cast_result["anim_player"],
+							"anim_name": cast_result["anim_name"],
+							"can_movement": cast_result["can_movement"]
+						})
 
 # спавн прожектайлов с анимации
 func spawn_object_from_animation():
