@@ -6,12 +6,10 @@
 script = ExtResource("1_1dcqp")
 id = "attack2"
 animation_name = "attack2"
-cooldown = 0.3
-damage = 20.0
-knockback_power = 150.0
+knockback_power = 100.0
 type_damage = "knockback"
 element_type = "fire"
 can_movement = true
 which_button_to_attack = "melee_attack"
-after_which_attack = "attack1"
+after_which_attack = Array[String](["attack1"])
 metadata/_custom_type_script = "uid://55ku56vqeupk"

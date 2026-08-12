@@ -6,14 +6,11 @@
 script = ExtResource("1_mf1kk")
 id = "explosion"
 animation_name = "explosion"
-mana_cost = 40.0
-cooldown = 2.0
-damage = 35.0
-knockback_power = 300.0
+knockback_power = 200.0
 stun_time = 0.2
 type_damage = "knockback"
 element_type = "fire"
 can_movement = true
 which_button_to_attack = "right_skill"
-after_which_attack = "fireball"
+after_which_attack = Array[String](["attack2"])
 metadata/_custom_type_script = "uid://55ku56vqeupk"

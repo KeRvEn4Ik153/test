@@ -59,7 +59,7 @@ func try_cast(input_button: String, player_mana: float, spawn_position: Vector2,
 		if not res: continue
 		
 		# выбираем нужный ресурс в зависимости от нажатой кнопки и прошлой анимацией
-		if res.which_button_to_attack == input_button and (res.after_which_attack == animation_hitbox.current_animation or res.after_which_attack == null):
+		if res.which_button_to_attack == input_button and (animation_hitbox.current_animation in res.after_which_attack or (len(res.after_which_attack) == 0 and animation_hitbox.current_animation != res.id)):
 			
 			var current_cooldown = cooldowns.get(res.id, 0.0)
 			# проверка хватает ли у игрока маны 
@@ -92,22 +92,6 @@ func try_cast(input_button: String, player_mana: float, spawn_position: Vector2,
 func what_to_do_with_attack(cast_result):
 	# ЕСЛИ ИГРОК УЖЕ АТАКУЕТ: записываем комбо в буфер наперед	
 				if player_node.state_machine.current_state.name == "Attack":
-					if player_node.state_of_attack == "recovery":
-						player_node.change_animation = {
-							"anim_player": cast_result["anim_player"],
-							"anim_name": cast_result["anim_name"],
-							"mana_cost": cast_result["mana_cost"],
-							"can_movement": cast_result["can_movement"]
-						}
-						return
-					if player_node.state_of_attack == "perfect_window":
-						player_node.change_animation = {
-							"anim_player": cast_result["anim_player"],
-							"anim_name": cast_result["anim_name"],
-							"mana_cost": cast_result["mana_cost"],
-							"can_movement": cast_result["can_movement"]
-						}
-						return
 					if not cast_result["change_attack"]:
 						player_node.buffered_attack = {
 							"anim_player": cast_result["anim_player"],

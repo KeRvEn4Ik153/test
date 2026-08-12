@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://bqdfh56mdluld"]
+
+[ext_resource type="Script" uid="uid://55ku56vqeupk" path="res://Classes/attack_resource.gd" id="1_3ktk5"]
+
+[resource]
+script = ExtResource("1_3ktk5")
+id = "attack3"
+animation_name = "attack3"
+knockback_power = 200.0
+type_damage = "knockback"
+element_type = "fire"
+can_movement = true
+which_button_to_attack = "melee_attack"
+after_which_attack = Array[String](["attack2", "explosion"])
+metadata/_custom_type_script = "uid://55ku56vqeupk"

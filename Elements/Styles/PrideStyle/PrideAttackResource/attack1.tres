@@ -6,9 +6,6 @@
 script = ExtResource("1_n7hpo")
 id = "attack1"
 animation_name = "attack1"
-mana_cost = 30.0
-cooldown = 0.3
-damage = 100.0
 knockback_power = 150.0
 type_damage = "knockback"
 element_type = "fire"
