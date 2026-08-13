@@ -20,6 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_cinpd")
 
 [node name="BarsContainer" type="VBoxContainer" parent="." unique_id=1479677107]
+visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 1
 anchors_preset = 1
@@ -72,6 +73,7 @@ vertical_alignment = 1
 
 [node name="PauseMenu" type="PanelContainer" parent="." unique_id=623855267]
 process_mode = 3
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,6 +120,7 @@ label_settings = SubResource("LabelSettings_3rj3x")
 
 [node name="StylesMenu" type="PanelContainer" parent="." unique_id=1219334908]
 process_mode = 3
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,25 +158,50 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabMenu" unique_id=64693904]
+[node name="StyleDetailsContainer" type="PanelContainer" parent="TabMenu" unique_id=1562580764]
+visible = false
+layout_mode = 2
+
+[node name="PlayerStatsContainer" type="PanelContainer" parent="TabMenu" unique_id=1040299612]
+layout_mode = 2
+
+[node name="PlayerStats" type="VBoxContainer" parent="TabMenu/PlayerStatsContainer" unique_id=64693904]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="HP" type="Label" parent="TabMenu/VBoxContainer" unique_id=1618820544]
+[node name="HP" type="Label" parent="TabMenu/PlayerStatsContainer/PlayerStats" unique_id=1618820544]
 layout_mode = 2
 
-[node name="MP" type="Label" parent="TabMenu/VBoxContainer" unique_id=1556145859]
+[node name="MP" type="Label" parent="TabMenu/PlayerStatsContainer/PlayerStats" unique_id=1556145859]
 layout_mode = 2
 
-[node name="CC" type="Label" parent="TabMenu/VBoxContainer" unique_id=753769175]
+[node name="CR" type="Label" parent="TabMenu/PlayerStatsContainer/PlayerStats" unique_id=753769175]
 layout_mode = 2
 
-[node name="CD" type="Label" parent="TabMenu/VBoxContainer" unique_id=864856964]
+[node name="CD" type="Label" parent="TabMenu/PlayerStatsContainer/PlayerStats" unique_id=864856964]
 layout_mode = 2
+
+[node name="DB" type="Label" parent="TabMenu/PlayerStatsContainer/PlayerStats" unique_id=1181200717]
+layout_mode = 2
+
+[node name="MenuButtons" type="HBoxContainer" parent="TabMenu" unique_id=1365165654]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="PlayerStats" type="Button" parent="TabMenu/MenuButtons" unique_id=1677150198]
+layout_mode = 2
+text = "KEY_STATS"
+
+[node name="StyleDetail" type="Button" parent="TabMenu/MenuButtons" unique_id=751247102]
+layout_mode = 2
+text = "KEY_DETAIL"
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/ChangeStylesButton" to="." method="_on_change_styles_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
 [connection signal="pressed" from="StylesMenu/BackToPause" to="." method="_on_back_to_pause_pressed"]
 [connection signal="pressed" from="StylesMenu/Resum" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="TabMenu/MenuButtons/PlayerStats" to="." method="_on_player_stats_pressed"]
+[connection signal="pressed" from="TabMenu/MenuButtons/StyleDetail" to="." method="_on_style_detail_pressed"]

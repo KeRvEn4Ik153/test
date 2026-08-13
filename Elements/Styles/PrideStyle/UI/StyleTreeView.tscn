@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dsjxujdo5utx3"]
+
+[ext_resource type="Script" uid="uid://bqjmxyw8p6iph" path="res://Elements/Styles/PrideStyle/UI/style_tree.gd" id="1_8xovi"]
+
+[node name="StyleTreeView" type="Control" unique_id=303924743]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StyleTree" type="Control" parent="." unique_id=518809075]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -130.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8xovi")
+
+[node name="attack1" type="Button" parent="StyleTree" unique_id=480677344]
+layout_mode = 1
+offset_top = 164.0
+offset_right = 113.0
+offset_bottom = 195.0
+text = "KEY_ATTACK1"
+
+[node name="attack2" type="Button" parent="StyleTree" unique_id=1240668641]
+layout_mode = 1
+offset_left = 133.0
+offset_top = 164.0
+offset_right = 246.0
+offset_bottom = 195.0
+text = "KEY_ATTACK2"
+
+[node name="attack3" type="Button" parent="StyleTree" unique_id=72095445]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 266.0
+offset_top = 164.0
+offset_right = 379.0
+offset_bottom = 195.0
+text = "KEY_ATTACK3"
+
+[node name="explosion" type="Button" parent="StyleTree" unique_id=1745015005]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 112.0
+offset_right = 246.0
+offset_bottom = 143.0
+text = "KEY_EXPLOSION"
+
+[node name="attraction" type="Button" parent="StyleTree" unique_id=1895136785]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 164.0
+offset_right = 542.0
+offset_bottom = 195.0
+text = "KEY_ATTRACTION"
+
+[node name="Line2D" type="Line2D" parent="StyleTree" unique_id=631245865]
+points = PackedVector2Array(113, 180, 133, 180)
+width = 3.0
+
+[node name="Line2D2" type="Line2D" parent="StyleTree" unique_id=60075829]
+points = PackedVector2Array(192, 164, 192, 143)
+width = 3.0
+
+[node name="Line2D3" type="Line2D" parent="StyleTree" unique_id=433795910]
+points = PackedVector2Array(246, 179, 266, 179)
+width = 3.0
+
+[node name="Line2D4" type="Line2D" parent="StyleTree" unique_id=44427184]
+points = PackedVector2Array(246, 128, 325, 164)
+width = 3.0
+
+[node name="Line2D5" type="Line2D" parent="StyleTree" unique_id=1898779976]
+points = PackedVector2Array(379, 179, 399, 179)
+width = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=17440695]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer" unique_id=234615947]
+layout_mode = 2
+
+[node name="ManaCostLabel" type="Label" parent="VBoxContainer" unique_id=1527729055]
+layout_mode = 2
+
+[node name="DamageLabel" type="Label" parent="VBoxContainer" unique_id=2120145264]
+layout_mode = 2
+
+[connection signal="gui_input" from="StyleTree" to="StyleTree" method="_gui_input"]
+[connection signal="mouse_entered" from="StyleTree/attack1" to="StyleTree" method="_on_attack_1_mouse_entered"]

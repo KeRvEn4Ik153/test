@@ -20,7 +20,7 @@ signal mana_changed(current, max_val)
 @export var mana_regen: float = 0
 
 @export var crit_multiplier: float = 1.5
-@export var crit_chance: float = 5.0
+@export var crit_rate: float = 5.0
 
 @export var damage_bonus: float = 0.0
 @export var stacks: int = 0

@@ -23,7 +23,9 @@ var enemy_effect_manager = null
 var inflict_effect = null
 
 @export var UI_scene: PackedScene
+@export var style_tree_path: PackedScene
 var UI
+var style_tree
 
 func _ready() -> void:
 	player_node = get_parent().get_parent()

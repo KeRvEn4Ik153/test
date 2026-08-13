@@ -26,10 +26,6 @@ window/size/viewport_height=360
 window/size/mode=3
 window/stretch/mode="canvas_items"
 
-[gui]
-
-theme/custom="uid://dj6v30jwws6hu"
-
 [input]
 
 ui_left={

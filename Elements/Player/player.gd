@@ -94,7 +94,7 @@ func _process(delta: float):
 	# изменение интерфейса
 	if hud:
 		hud.update_combo_label(local_history)
-		hud.update_static_labels(stats.max_health, stats.max_mana, stats.crit_chance, stats.crit_multiplier)
+		hud.update_static_labels(stats.max_health, stats.max_mana, stats.crit_rate, stats.crit_multiplier, stats.damage_bonus)
 
 	# регенерация ресурсов
 	if stats.current_mana < stats.max_mana:
@@ -192,7 +192,7 @@ func calculate_damage(base_damage: float, resists: Dictionary, element: String) 
 	var roll = randf_range(0.0, 100.0)
 	
 	# расчет будет ли удар критом и сколько будет множитель
-	if roll <= stats.crit_chance:
+	if roll <= stats.crit_rate:
 		final_damage = modified_base * stats.crit_multiplier
 		is_crit = true
 	
@@ -226,6 +226,9 @@ func fill_slot(path_item):
 	UI_container.add_child(item_ui)
 
 	weapon.UI = item_ui
+
+	if hud:
+		hud.setup_style_tree()
 
 #  отображение кнопки взаимодействия с интерактивными предметами 
 func _on_interact_area_entered(area: Area2D) -> void:

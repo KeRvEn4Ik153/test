@@ -6,16 +6,18 @@ extends Control
 @onready var hplabel: Label = $BarsContainer/HealthBar/Label
 @onready var mplabel: Label = $BarsContainer/ManaBar/Label 
 
-@onready var maxhplabel: Label = $TabMenu/VBoxContainer/HP
-@onready var maxmplabel: Label = $TabMenu/VBoxContainer/MP
-@onready var cclabel: Label = $TabMenu/VBoxContainer/CC
-@onready var cdlabel: Label = $TabMenu/VBoxContainer/CD
+@onready var maxhplabel: Label = $TabMenu/PlayerStatsContainer/PlayerStats/HP
+@onready var maxmplabel: Label = $TabMenu/PlayerStatsContainer/PlayerStats/MP
+@onready var crlabel: Label = $TabMenu/PlayerStatsContainer/PlayerStats/CR
+@onready var cdlabel: Label = $TabMenu/PlayerStatsContainer/PlayerStats/CD
+@onready var dblabel: Label = $TabMenu/PlayerStatsContainer/PlayerStats/DB
 
 @onready var combo_keys: Label = $ComboLabel
-
 @onready var pause_menu: PanelContainer = $PauseMenu
 @onready var styles_menu: PanelContainer = $StylesMenu
 @onready var tab_menu: PanelContainer = $TabMenu
+@onready var player_stats_menu: PanelContainer = $TabMenu/PlayerStatsContainer
+@onready var style_details_menu: PanelContainer = $TabMenu/StyleDetailsContainer
 
 @onready var styles_container: HBoxContainer = $StylesMenu/StylesContainer
 
@@ -23,6 +25,18 @@ extends Control
 @export var styles: Array[ItemData] = []
 
 var button_id
+
+var styletree
+
+func _ready() -> void:
+	if pause_menu:
+		pause_menu.visible = false
+	if styles_menu:
+		styles_menu.visible = false
+	if tab_menu:
+		tab_menu.visible = false
+		
+	self.visible = true
 
 func setup_bar(max_hp: float, max_mp: float) -> void:
 	if hpbar and mpbar:
@@ -33,7 +47,12 @@ func setup_bar(max_hp: float, max_mp: float) -> void:
 		mpbar.max_value = max_mp
 		mpbar.value = max_mp
 		mplabel.text = str(int(max_mp)) + " / " + str(int(max_mp))
-		
+
+func setup_style_tree():
+	if player.weapon:
+		styletree = player.weapon.style_tree_path.instantiate()
+		style_details_menu.add_child(styletree)
+
 func update_hp_bar(hp: float) -> void:
 	if hpbar:
 		hpbar.value = hp
@@ -44,15 +63,17 @@ func update_mp_bar(mp: float) -> void:
 		mpbar.value = mp
 		mplabel.text = str(int(mp)) + " / " + str(int(mpbar.max_value))
 		
-func update_static_labels(max_hp: float, max_mp: float, crit_chance: float, crit_damage: float):
+func update_static_labels(max_hp: float, max_mp: float, crit_rate: float, crit_damage: float, damage_bonus: float):
 	if maxhplabel:
 		maxhplabel.text = tr("KEY_MAX_HP") + ": " + (str(max_hp))
 	if maxmplabel:
 		maxmplabel.text = tr("KEY_MAX_HP") + ": " + (str(max_mp))
-	if cclabel:
-		cclabel.text = tr("KEY_CC") + ": " + (str(crit_chance))
+	if crlabel:
+		crlabel.text = tr("KEY_CC") + ": " + (str(crit_rate))
 	if cdlabel:
 		cdlabel.text = tr("KEY_CD") + ": " + (str(crit_damage))
+	if dblabel:
+		dblabel.text = tr("KEY_DB") + ": " + (str(damage_bonus))
 
 func update_combo_label(input_history):
 	if combo_keys.text.is_empty():
@@ -60,22 +81,15 @@ func update_combo_label(input_history):
 	else:
 		combo_keys.text = "+".join(input_history)
 		
-func _ready() -> void:
-	if pause_menu:
-		pause_menu.visible = false
-	if styles_menu:
-		styles_menu.visible = false
-	if tab_menu:
-		tab_menu.visible = false
-		
-	self.visible = true
-		
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		tab_menu.visible = false
+		style_details_menu.visible = false
 		toggle_pause()
 	if event.is_action_pressed("tab_menu"):
 		tab_menu.visible = not tab_menu.visible
+		player_stats_menu.visible = true
+
 
 func toggle_pause() -> void:
 	if pause_menu:
@@ -113,3 +127,11 @@ func _on_continue_pressed() -> void:
 	pause_menu.visible = false
 	styles_menu.visible = false
 	get_tree().paused = false
+
+func _on_player_stats_pressed() -> void:
+	player_stats_menu.visible = true
+	style_details_menu.visible = false
+
+func _on_style_detail_pressed() -> void:
+	player_stats_menu.visible = false
+	style_details_menu.visible = true

@@ -14,9 +14,8 @@ const ZOOM_LEVELS = [
 # переменые для новой механики
 var will: int = 0
 var life_time_of_stack: float = 10.0
-
-func _ready() -> void:
-	super._ready()
+var is_crit_rate_buff_active: bool = false
+var crit_rate_buff: float = 10.0
 
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -26,6 +25,18 @@ func _process(delta: float) -> void:
 	life_time_of_stack -= delta
 	if life_time_of_stack <= 0:
 		managment_stacks(false, false)
+
+func attack1():
+	attack_direction()
+	return true
+	
+func attack2():
+	attack_direction()
+	return true
+
+func attack3():
+	attack_direction()
+	return true
 
 # переопределяем функцию с базового класса для добавления новой механики
 func what_to_do_with_attack(cast_result):
@@ -92,23 +103,28 @@ func managment_stacks(plus: bool, clean: bool):
 		player_node.stats.stacks -= will
 		will = 0
 		UI.update_stacks(will)
+		if is_crit_rate_buff_active:
+			player_node.stats.crit_rate -= crit_rate_buff
+			is_crit_rate_buff_active = false
 		return
 	if plus:
 		if will < 10:
 			will += 1
 			player_node.stats.stacks += 1
 			UI.update_stacks(will)
+			if not is_crit_rate_buff_active and will >= 5:
+				player_node.stats.crit_rate += crit_rate_buff
+				is_crit_rate_buff_active = true
 	if not plus:
 		if will > 0:
 			will -= 1
 			player_node.stats.stacks -= 1
 			UI.update_stacks(will)
-		
+			if is_crit_rate_buff_active and will < 5:
+				player_node.stats.crit_rate -= crit_rate_buff
+				is_crit_rate_buff_active = false
+	player_node.stats.get_damage_bonus()
 
-func attack1():
-	attack_direction()
-	return true
-	
 #func unic_burn_effect():
 	#var new_effect = UnicBurnEffect.new(10.0, 5, 20)
 	#player_node.effect_manager.add_effect(new_effect)

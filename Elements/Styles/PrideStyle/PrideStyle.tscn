@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://bqdfh56mdluld" path="res://Elements/Styles/PrideStyle/PrideAttackResource/attack3.tres" id="5_lhcuj"]
 [ext_resource type="Resource" uid="uid://giqduwmbdmkt" path="res://Elements/Styles/PrideStyle/PrideAttackResource/attraction.tres" id="5_vu6wb"]
 [ext_resource type="Resource" uid="uid://c85nx3vy2j6bo" path="res://Elements/Styles/PrideStyle/PrideAttackResource/explosion.tres" id="6_jf6yy"]
+[ext_resource type="PackedScene" uid="uid://dsjxujdo5utx3" path="res://Elements/Styles/PrideStyle/UI/StyleTreeView.tscn" id="9_58gr6"]
 [ext_resource type="Resource" uid="uid://c00rltjfmo13o" path="res://Elements/Styles/PrideStyle/PrideAttackResource/attack2.tres" id="10_4yt41"]
 [ext_resource type="PackedScene" uid="uid://cxy77iow85qpc" path="res://Effects/MagicEffects/PrideStyleEffects/fire_explosion_effect.tscn" id="11_sf2tp"]
 [ext_resource type="PackedScene" uid="uid://bfijbksqbpd7r" path="res://Effects/MagicEffects/PrideStyleEffects/fire_flash.tscn" id="12_h65tx"]
@@ -411,6 +412,7 @@ script = ExtResource("1_58gr6")
 attack_resources = Array[ExtResource("2_qoakm")]([ExtResource("10_4yt41"), ExtResource("5_lhcuj"), ExtResource("5_vu6wb"), ExtResource("6_jf6yy"), ExtResource("4_sehh4")])
 element_type = "fire"
 UI_scene = ExtResource("2_h65tx")
+style_tree_path = ExtResource("9_58gr6")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=326263827]
 collision_layer = 0
