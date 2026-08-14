@@ -137,6 +137,7 @@ color = Color(0, 0, 0, 0.78431374)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+focus_mode = 0
 text = "KEY_BACK"
 
 [node name="StylesContainer" type="HBoxContainer" parent="StylesMenu" unique_id=1783499107]
@@ -148,6 +149,7 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+focus_mode = 0
 text = "KEY_CONTINUE"
 
 [node name="TabMenu" type="PanelContainer" parent="." unique_id=420807777]
@@ -192,10 +194,12 @@ size_flags_vertical = 0
 
 [node name="PlayerStats" type="Button" parent="TabMenu/MenuButtons" unique_id=1677150198]
 layout_mode = 2
+focus_mode = 0
 text = "KEY_STATS"
 
 [node name="StyleDetail" type="Button" parent="TabMenu/MenuButtons" unique_id=751247102]
 layout_mode = 2
+focus_mode = 0
 text = "KEY_DETAIL"
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

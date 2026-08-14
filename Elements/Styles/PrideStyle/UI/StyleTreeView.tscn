@@ -100,4 +100,3 @@ layout_mode = 2
 layout_mode = 2
 
 [connection signal="gui_input" from="StyleTree" to="StyleTree" method="_gui_input"]
-[connection signal="mouse_entered" from="StyleTree/attack1" to="StyleTree" method="_on_attack_1_mouse_entered"]

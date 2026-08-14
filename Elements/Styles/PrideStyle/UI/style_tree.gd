@@ -18,6 +18,14 @@ func _ready():
 			if file_name.ends_with(".tres"):
 				resources.append(load(resources_folder + file_name))
 
+	for button in self.get_children():	
+		if button is Button:
+			button.mouse_entered.connect(_on_button_mouse_entered.bind(button))
+	
+	for button in get_children():
+		if button is Button:
+			button.focus_mode = Control.FOCUS_NONE
+
 func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -27,15 +35,13 @@ func _gui_input(event):
 			else:
 				dragging = false
 
-	elif event is InputEventMouseMotion and dragging:
+	elif event is InputEventMouseMotion and dragging:	
 		global_position = event.global_position + drag_offset
 
-
-func _on_attack_1_mouse_entered() -> void:
+func _on_button_mouse_entered(button: Button) -> void:
 	for resource in resources:
-		for button in self.get_children(): 
-			if button.name == resource.id:
-				name_label.text = str(resource.animation_name)
-				mana_cost_label.text = str(resource.mana_cost)
-				damage_label.text = str(resource.damage)
-				return
+		if button.name == resource.id:
+			name_label.text = tr("Name: ") + str(resource.animation_name)
+			mana_cost_label.text = tr("Mana cost: ") + str(resource.mana_cost)
+			damage_label.text = tr("Damage: ") + str(resource.damage)
+			return
