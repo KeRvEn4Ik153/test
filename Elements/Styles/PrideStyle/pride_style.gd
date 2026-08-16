@@ -102,7 +102,7 @@ func managment_stacks(plus: bool, clean: bool):
 	if clean:
 		player_node.stats.stacks -= will
 		will = 0
-		UI.update_stacks(will)
+		UI.update_stacks(will)	
 		if is_crit_rate_buff_active:
 			player_node.stats.crit_rate -= crit_rate_buff
 			is_crit_rate_buff_active = false

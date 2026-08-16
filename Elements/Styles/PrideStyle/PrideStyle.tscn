@@ -410,7 +410,6 @@ animations = [{
 [node name="PrideStyle" type="Node2D" unique_id=2071520491]
 script = ExtResource("1_58gr6")
 attack_resources = Array[ExtResource("2_qoakm")]([ExtResource("10_4yt41"), ExtResource("5_lhcuj"), ExtResource("5_vu6wb"), ExtResource("6_jf6yy"), ExtResource("4_sehh4")])
-element_type = "fire"
 UI_scene = ExtResource("2_h65tx")
 style_tree_path = ExtResource("9_58gr6")
 

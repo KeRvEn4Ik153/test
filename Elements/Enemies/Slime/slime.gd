@@ -4,6 +4,7 @@ extends EnemyBase
 
 var jump_timer: float = 0.0
 
+# логика потрулирования
 func _patrol_logic(delta: float) -> void:
 	jump_timer -= delta
 	
@@ -23,13 +24,12 @@ func _patrol_logic(delta: float) -> void:
 
 	if not floor_detector.is_colliding():
 		_flip_enemy()
-
-# ЛОГИКА ПОГОНИ (Прыжки строго в сторону игрока)
+	
+# логика преследования
 func _chase_logic(delta: float) -> void:
-	if player_node and is_player_in_area:
-		var direction_to_player = sign(player_node.global_position.x - global_position.x)
-		if direction_to_player != 0 and direction_to_player != direction:
-			_flip_enemy()
+	if player_node:
+		if not is_player_in_front():
+			_flip_enemy() 
 		
 		jump_timer -= delta
 	
@@ -44,3 +44,26 @@ func _chase_logic(delta: float) -> void:
 		
 		if is_on_floor() and not floor_detector.is_colliding():
 			velocity.x = 0
+
+# переопределяем функцию получения урона для новой механики
+func take_damage(amount: int, knockback_power: float, attacker_position: Vector2 = Vector2.ZERO) -> void:
+	if not is_player_in_front() and parry_player():
+		_flip_enemy() 
+		GameManager.hit_stop(0.08)
+		return
+		
+	super.take_damage(amount, knockback_power, attacker_position)
+
+# переопределяем функцию что бы враг не реагировал на игрока если он его видит
+func _chek_line_of_sight():
+	if player_node:
+		return
+	
+	if current_state == State.CHASE:
+		current_state = State.PATROL
+
+# функция для парирования атаки игрока
+func parry_player():
+	player_node.take_player_damage(shake_intensity, shake_duration, 0, global_position)
+	current_state = State.CHASE
+	return true

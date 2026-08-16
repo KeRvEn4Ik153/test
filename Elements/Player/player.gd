@@ -105,7 +105,7 @@ func _process(delta: float):
 				
 	# использование стилей
 	if trigger_actions.any(func(action): return Input.is_action_just_pressed(action)):
-		if weapon and weapon.has_method("try_cast"):
+		if weapon and weapon.has_method("try_cast") and state_machine.current_state != state_machine.states.get("knockback"):
 			cast_result = weapon.try_cast(input_button, stats.current_mana, global_position, get_global_mouse_position())
 			
 			if cast_result and cast_result["is_combo"]:
@@ -182,7 +182,7 @@ func self_knockback(push_force: float, attack_pos: Vector2) -> void:
 			state_machine.change_state(state_machine.current_state, "Knockback", {"velocity": kb_velocity})
 			
 # подсчет урона который нанес игрок
-func calculate_damage(base_damage: float, resists: Dictionary, element: String) -> Dictionary:
+func calculate_damage(base_damage: float) -> Dictionary:
 	# проверка на бонусы урона
 	var damage_bonus = stats.get_damage_bonus()
 	var modified_base: float = base_damage * (1.0 + (damage_bonus / 100.0))
@@ -195,10 +195,6 @@ func calculate_damage(base_damage: float, resists: Dictionary, element: String) 
 	if roll <= stats.crit_rate:
 		final_damage = modified_base * stats.crit_multiplier
 		is_crit = true
-	
-	# если у врага есть сопротивление к урону то снижаем урон
-	var resist = resists[element]
-	final_damage = final_damage - (final_damage * resist)
 	
 	# округление до целого числа
 	var final_damage_int: int = roundi(final_damage)

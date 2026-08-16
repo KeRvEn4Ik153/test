@@ -73,7 +73,6 @@ height = 36.0
 collision_layer = 4
 script = ExtResource("1_hi1av")
 enemy_stats = ExtResource("2_la6ap")
-shake_intencity = 2.0
 
 [node name="EnemyBodyArea" type="Area2D" parent="." unique_id=743431456]
 collision_layer = 0

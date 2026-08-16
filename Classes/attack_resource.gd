@@ -13,9 +13,6 @@ class_name AttackData
 @export_category("Combat Stats")
 @export var damage: float = 0.0
 @export var knockback_power: float = 0.0
-@export var stun_time: float = 0.0
-@export var type_damage: String = ""
-@export var element_type: String = ""
 @export var projectile_scene: PackedScene # Сцена файрбола (если есть)
 @export var can_movement: bool = false
 

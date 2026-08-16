@@ -4,8 +4,6 @@ class_name StyleData
 @export var attack_resources: Array[AttackData] = []
 var attack_resource: AttackData
 
-@export var element_type: String = ""
-
 @onready var animation_hitbox: AnimationPlayer = $AnimationPlayer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area: Area2D = $Area2D
@@ -25,7 +23,7 @@ var inflict_effect = null
 @export var UI_scene: PackedScene
 @export var style_tree_path: PackedScene
 var UI
-var style_tree
+var style_tree 
 
 func _ready() -> void:
 	player_node = get_parent().get_parent()
@@ -43,7 +41,7 @@ func _process(delta: float) -> void:
 		player_node.state_of_attack = attack_resource.state_of_attack
 	for key in cooldowns:
 		cooldowns[key] -= delta
-
+	
 # спавн эффектов атаки происходит в AnimationPlayer
 func spawn_effect(effect: PackedScene) -> void:
 	if effect:
@@ -147,10 +145,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				enemy_effect_manager.add_effect(inflict_effect)
 			
 		body.take_damage(attack_resource.damage, 
-			attack_resource.stun_time, 
-			attack_resource.knockback_power, 
-			attack_resource.element_type, 
-			attack_resource.type_damage, 
+			attack_resource.knockback_power,  
 			attacker_pos)
 
 # функция создания эффекта для AnimationPlayer
