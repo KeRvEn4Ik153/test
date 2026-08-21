@@ -9,8 +9,11 @@ var is_looping: bool = false
 
 var anim_name: String
 
+var style_manager: StyleManager
+
 func enter(data: Dictionary = {}) -> void:
 	style_data = data
+	style_manager = character.get_node("StyleManager")
 	
 	CR.color = Color()
 		
@@ -69,9 +72,9 @@ func physics_update(delta: float) -> void:
 	attack_timer -= delta
 	if attack_timer <= 0:
 		# ПРОВЕРКА БУФЕРА: если игрок нажал еще кнопки во время анимации
-		if character.buffered_attack != {}:
-			var next_attack = character.buffered_attack.duplicate()
-			character.buffered_attack.clear() # Очищаем буфер
+		if style_manager.buffered_attack != {}:
+			var next_attack = style_manager.buffered_attack.duplicate()
+			style_manager.buffered_attack.clear() # Очищаем буфер
 			
 			# Списываем ману за следующее комбо
 			if next_attack["mana_cost"]:
@@ -91,9 +94,9 @@ func physics_update(delta: float) -> void:
 				get_parent().change_state(self, "Jump")
 	
 	# если переменая change_animation не пустая значит отменяем текущую анимацию и запускаем новую
-	if character.change_animation != {}:
-		var next_attack = character.change_animation.duplicate()
-		character.change_animation.clear()
+	if style_manager.change_animation != {}:
+		var next_attack = style_manager.change_animation.duplicate()
+		style_manager.change_animation.clear()
 		
 		if next_attack["mana_cost"]:
 			character.stats.current_mana -= next_attack["mana_cost"]

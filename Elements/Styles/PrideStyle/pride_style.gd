@@ -42,8 +42,8 @@ func attack3():
 func what_to_do_with_attack(cast_result):
 	# ЕСЛИ ИГРОК УЖЕ АТАКУЕТ: записываем комбо в буфер наперед	
 				if player_node.state_machine.current_state.name == "Attack":
-					if player_node.state_of_attack == "perfect_window":
-						player_node.buffered_attack = {
+					if player_node.style_manager.state_of_attack == "perfect_window":
+						player_node.style_manager.buffered_attack = {
 							"anim_player": cast_result["anim_player"],
 							"anim_name": cast_result["anim_name"],
 							"mana_cost": cast_result["mana_cost"],
@@ -53,7 +53,7 @@ func what_to_do_with_attack(cast_result):
 						life_time_of_stack = 10.0
 						return
 					if cast_result["change_attack"]:
-						player_node.change_animation = {
+						player_node.style_manager.change_animation = {
 							"anim_player": cast_result["anim_player"],
 							"anim_name": cast_result["anim_name"],
 							"mana_cost": cast_result["mana_cost"],
@@ -61,7 +61,7 @@ func what_to_do_with_attack(cast_result):
 						}
 						return
 					if not cast_result["change_attack"]:
-						player_node.buffered_attack = {
+						player_node.style_manager.buffered_attack = {
 							"anim_player": cast_result["anim_player"],
 							"anim_name": cast_result["anim_name"],
 							"mana_cost": cast_result["mana_cost"],

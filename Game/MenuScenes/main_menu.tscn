@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_yltbk")
 
 [node name="MainPanel" type="PanelContainer" parent="." unique_id=1912725007]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,6 +93,70 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "KEY_BACK"
 
+[node name="Saves" type="PanelContainer" parent="." unique_id=657401486]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="Saves" unique_id=1167442552]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SavesContainer" type="HBoxContainer" parent="Saves/ButtonsContainer" unique_id=769251875]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Save1" type="Button" parent="Saves/ButtonsContainer/SavesContainer" unique_id=451031694]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Save1"
+
+[node name="Save2" type="Button" parent="Saves/ButtonsContainer/SavesContainer" unique_id=1273779399]
+layout_mode = 2
+text = "Save2"
+
+[node name="Save3" type="Button" parent="Saves/ButtonsContainer/SavesContainer" unique_id=556188012]
+layout_mode = 2
+text = "Save3"
+
+[node name="Save4" type="Button" parent="Saves/ButtonsContainer/SavesContainer" unique_id=442740025]
+layout_mode = 2
+text = "Save4"
+
+[node name="DeleteButtonContainer" type="HBoxContainer" parent="Saves/ButtonsContainer" unique_id=1717034985]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Delete1" type="Button" parent="Saves/ButtonsContainer/DeleteButtonContainer" unique_id=1756618397]
+layout_mode = 2
+text = "Delete"
+
+[node name="Delete2" type="Button" parent="Saves/ButtonsContainer/DeleteButtonContainer" unique_id=998498870]
+layout_mode = 2
+text = "Delete"
+
+[node name="Delete3" type="Button" parent="Saves/ButtonsContainer/DeleteButtonContainer" unique_id=1816303993]
+layout_mode = 2
+text = "Delete"
+
+[node name="Delete4" type="Button" parent="Saves/ButtonsContainer/DeleteButtonContainer" unique_id=374685285]
+layout_mode = 2
+text = "Delete"
+
+[node name="BackToMain" type="Button" parent="Saves" unique_id=998106932]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Back"
+
 [connection signal="pressed" from="MainPanel/VBoxContainer/Play" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MainPanel/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainPanel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
@@ -100,3 +165,5 @@ text = "KEY_BACK"
 [connection signal="pressed" from="LanguagesPanel/VBoxContainer/ru" to="." method="_on_ru_pressed"]
 [connection signal="pressed" from="LanguagesPanel/VBoxContainer/en" to="." method="_on_en_pressed"]
 [connection signal="pressed" from="LanguagesPanel/backlanguages" to="." method="_on_backlanguages_pressed"]
+[connection signal="pressed" from="Saves/ButtonsContainer/SavesContainer/Save1" to="." method="_on_save_1_pressed"]
+[connection signal="pressed" from="Saves/BackToMain" to="." method="_on_back_to_main_pressed"]

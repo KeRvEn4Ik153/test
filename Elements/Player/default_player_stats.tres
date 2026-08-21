@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_u8hhf")
 speed = 150.0
-jump_velocity = -350.0
+jump_velocity = -425.0
 dash_cooldown = 1.0
 dash_duration = 0.2
 dash_speed = 400.0

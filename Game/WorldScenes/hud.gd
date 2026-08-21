@@ -23,6 +23,7 @@ extends Control
 
 @onready var player: CharacterBody2D = $"../../Player"
 @export var styles: Array[ItemData] = []
+var style_manager: Node2D
 
 var button_id
 
@@ -37,6 +38,8 @@ func _ready() -> void:
 		tab_menu.visible = false
 		
 	self.visible = true
+
+	style_manager = player.get_node("StyleManager")
 
 func setup_bar(max_hp: float, max_mp: float) -> void:
 	if hpbar and mpbar:
@@ -117,7 +120,7 @@ func create_button_style(style):
 	new_button.icon = style.icon	
 	styles_container.add_child(new_button)
 		
-	new_button.pressed.connect(player.fill_slot.bind(style.path))
+	new_button.pressed.connect(style_manager.fill_slot.bind(style.path))
 
 func _on_back_to_pause_pressed() -> void:
 	pause_menu.visible = true

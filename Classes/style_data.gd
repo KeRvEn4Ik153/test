@@ -30,6 +30,7 @@ func _ready() -> void:
 	manager = player_node.get_node("EffectManager")
 	player_camera = player_node.get_node("Camera2D")
 	
+	
 	hitbox.disabled = true
 	animated_sprite.visible = false
 
@@ -38,7 +39,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if attack_resource:
-		player_node.state_of_attack = attack_resource.state_of_attack
+		player_node.style_manager.state_of_attack = attack_resource.state_of_attack
 	for key in cooldowns:
 		cooldowns[key] -= delta
 	
@@ -91,9 +92,9 @@ func try_cast(input_button: String, player_mana: float, spawn_position: Vector2,
 # функция для проверки что делать с атакой
 func what_to_do_with_attack(cast_result):
 	# ЕСЛИ ИГРОК УЖЕ АТАКУЕТ: записываем комбо в буфер наперед	
-				if player_node.state_machine.current_state.name == "Attack":
+				if player_node.style_manager.state_machine.current_state.name == "Attack":
 					if not cast_result["change_attack"]:
-						player_node.buffered_attack = {
+						player_node.style_manager.buffered_attack = {
 							"anim_player": cast_result["anim_player"],
 							"anim_name": cast_result["anim_name"],
 							"mana_cost": cast_result["mana_cost"],
@@ -101,7 +102,7 @@ func what_to_do_with_attack(cast_result):
 						}
 						return
 					if cast_result["change_attack"]:
-						player_node.change_animation = {
+						player_node.style_manager.change_animation = {
 							"anim_player": cast_result["anim_player"],
 							"anim_name": cast_result["anim_name"],
 							"mana_cost": cast_result["mana_cost"],
@@ -111,10 +112,10 @@ func what_to_do_with_attack(cast_result):
 				else:
 							# ЕСЛИ ИГРОК НЕ АТАКУЕТ: выполняем комбо сразу
 					if cast_result["mana_cost"]:
-						player_node.stats.current_mana -= cast_result["mana_cost"]
+						player_node.style_manager.stats.current_mana -= cast_result["mana_cost"]
 									
 					if cast_result.has("anim_name") and cast_result["anim_name"] != "":
-						player_node.state_machine.change_state(player_node.state_machine.current_state, "Attack", {
+						player_node.style_manager.state_machine.change_state(player_node.state_machine.current_state, "Attack", {
 							"anim_player": cast_result["anim_player"],
 							"anim_name": cast_result["anim_name"],
 							"can_movement": cast_result["can_movement"]

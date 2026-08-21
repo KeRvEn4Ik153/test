@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://624cuql416cx"]
 
 [ext_resource type="Script" uid="uid://d1efi7q8tjlg6" path="res://Elements/Player/player.gd" id="1_ju6bj"]
+[ext_resource type="Script" uid="uid://c6qmueciuu4e1" path="res://Elements/Player/style_manager.gd" id="3_4y7yi"]
 [ext_resource type="Script" uid="uid://c0nu1yw1l38us" path="res://Elements/Player/States/state_machine.gd" id="3_6sb7l"]
 [ext_resource type="Script" uid="uid://cpjxi4ocb5jwy" path="res://Elements/Player/States/run_state.gd" id="4_2a4b6"]
 [ext_resource type="Script" uid="uid://bx0fn8gwh6wg" path="res://Elements/Player/States/idle_state.gd" id="5_8wxpl"]
@@ -57,14 +58,15 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 script = ExtResource("7_2a4b6")
 
-[node name="Slot1" type="Node2D" parent="." unique_id=516571184]
-
-[node name="Slot2" type="Node2D" parent="." unique_id=1635196096]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1645014539]
 sprite_frames = SubResource("SpriteFrames_6sb7l")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="StyleSlot" type="Node2D" parent="." unique_id=516571184]
+
+[node name="StyleManager" type="Node2D" parent="." unique_id=1670271512]
+script = ExtResource("3_4y7yi")
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=1776396255 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_6sb7l")

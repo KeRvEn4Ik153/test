@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://7k0a802v57ri"]
+
+[ext_resource type="Script" uid="uid://drlb8b3wh5eoi" path="res://Elements/Interactable/SavePoint/save_point.gd" id="1_4hecb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0yhtv"]
+
+[node name="Area2D" type="Area2D" unique_id=332935149]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_4hecb")
+promt = "Press"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1521981643]
+shape = SubResource("CircleShape2D_0yhtv")
+
+[node name="Label" type="Label" parent="." unique_id=105857661]
+offset_right = 40.0
+offset_bottom = 23.0

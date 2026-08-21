@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dc7b5yv68dn8s"]
+
+[ext_resource type="Texture2D" uid="uid://dpgxus8ej03n8" path="res://Assets/Sprites/FireBallMagic/fireball1.png" id="1_bjb8k"]
+[ext_resource type="Script" uid="uid://dxmj1ahjqj2it" path="res://Classes/item_resource.gd" id="2_avdw0"]
+[ext_resource type="PackedScene" uid="uid://eoat6ak16k6v" path="res://Elements/Styles/PrideStyle/PrideStyle.tscn" id="3_w3drx"]
+
+[resource]
+script = ExtResource("2_avdw0")
+path = "res://Resources/StyleResources/pride_style_data.tres"
+title = "Pride style"
+style_scene = ExtResource("3_w3drx")
+icon = ExtResource("1_bjb8k")
+metadata/_custom_type_script = "uid://dxmj1ahjqj2it"

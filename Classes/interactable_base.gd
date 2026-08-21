@@ -1,6 +1,8 @@
 extends Area2D
 class_name Interactable
 
+var end_interact: bool = true
+
 @onready var label: Label = $Label
 
 @export var promt: String 
@@ -15,4 +17,5 @@ func show_hide_label() -> void:
 		label.visible = not label.visible
 
 func interact(_player: CharacterBody2D):
-	print("Interact")
+	pass
+	return end_interact

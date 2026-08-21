@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalData="*uid://u1khew0k4pqg"
 GameManager="*uid://b1bjp7npiwhpw"
+SaveManager="*uid://h6e0kr2tvr4s"
 
 [display]
 

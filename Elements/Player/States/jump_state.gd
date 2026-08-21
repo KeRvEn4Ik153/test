@@ -10,6 +10,10 @@ func physics_update(delta: float) -> void:
 	# включаем гравитация
 	character.velocity += character.get_gravity() * delta
 	
+	# если кнопку отпустили, пока персонаж ещё летит вверх — обрезаем скорость
+	if Input.is_action_just_released("ui_accept") and character.velocity.y < 0:
+		character.velocity.y *= 0.5
+	
 	# обработка смены направления взгляда
 	if Input.is_key_pressed(KEY_A): character.player_direction = 'left'
 	if Input.is_key_pressed(KEY_D): character.player_direction = 'right'
